@@ -15,3 +15,8 @@ Refer to https://github.com/phonaylin/amb-backend
 ## Reference 
 - AngularJS
 http://briantford.com/blog/huuuuuge-angular-apps
+- Jivochat for chatting
+https://www.jivochat.com/
+- Oway
+- PayDollar
+- Flymya
