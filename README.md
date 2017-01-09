@@ -12,3 +12,6 @@ Refer to https://github.com/phonaylin/amb-backend
 - Spring 
 - PostgreSQL
 
+## Reference 
+- AngularJS
+http://briantford.com/blog/huuuuuge-angular-apps
