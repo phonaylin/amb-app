@@ -1,0 +1,277 @@
+/** Theme designed by Innosoft Co.,Ltd **/
+
+/*color code : 00c4ef ,a0e0f6,  0068ad*/
+
+body{
+	font-family : "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.alert-topbar{
+	padding:5px 0px;
+	color: #fff;
+	font-size:11px;
+	background:#0068ad;
+}
+
+.alert-topbar a{
+	color: #fff;
+}
+
+.amb_nav_header{
+	margin-top:30px;
+}
+
+.navbar-brand .amblogo {
+	height:50px;
+}
+
+.amb-navbar{
+	margin-bottom:0px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	background: #fff;
+	border:none;
+	border-top:2px solid #0068ad;
+	border-bottom:1px solid #eee;
+	border-radius: 0px;
+}
+
+.navbar-brand{
+	padding-top:0px;
+}
+
+.navbar-brand a{
+	padding-top:0px;
+	min-width: 200px;
+}
+
+.amb-navbar a{
+	color: #444;
+}
+
+.amb-navbar .open > a,
+.amb-navbar .open > a:hover,
+.amb-navbar .open > a:focus{
+	background:#0068ad;
+	color: #fff;
+}
+
+
+
+.amb-navbar .nav > li > a{
+	margin-top:4px;
+	float: none;
+	text-decoration: none;
+	text-shadow: none;
+	font-size:16px;
+}
+
+.amb-navbar .nav > .active > a,
+.amb-navbar .nav > .active > a:hover,
+.amb-navbar .nav > .active > a:focus {
+  color: #222;
+  text-decoration: none;
+  background-color: transparent;
+     -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+          
+}
+
+.amb-navbar .nav > li > a:focus,
+.amb-navbar .nav > li > a:hover {
+  color: #0ac;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+
+.amb-navbar .nav li.dropdown > .dropdown-toggle .caret {
+  border-top-color: #FFF;
+  border-bottom-color: #FFF;
+}
+
+.amb-navbar .nav li.dropdown > a:hover .caret {
+  border-top-color: #D2E4CB;
+  border-bottom-color: #D2E4CB;
+}
+
+
+.amb-navbar .nav li.dropdown.open > .dropdown-toggle, .amb-navbar .nav li.dropdown.active > .dropdown-toggle, .amb-navbar .nav li.dropdown.open.active > .dropdown-toggle {
+color: #555;
+background-color: transparent;
+}
+
+.amb-navbar .dropdown-menu li > a:hover,
+.amb-navbar .dropdown-menu li > a:focus,
+.amb-navbar .dropdown-submenu:hover > a {
+  color: #fff !important;
+  text-decoration: none;
+  background-color: #00A4E3;
+background-image: none;
+}
+
+.amb-navbar .dropdown-menu .active > a,
+.amb-navbar .dropdown-menu .active > a:hover {
+  color: #666 !important;
+  text-decoration: none;
+  background-color: #00A4E3;
+ 
+  outline: 0;
+}
+
+.amb-navbar .navbar-toggle .icon-bar {
+        background-color: #0068ad;
+}
+
+.name {
+  font-size: 18px;
+  color: #333;
+  padding-top: 15px;
+  padding-right:20px;
+}
+
+.nav-item-bus a{
+	color: #0068ad;
+}
+
+
+.list-unstyled {
+    margin: 0;
+}
+
+.list-unstyled > li > a {
+    color: black;
+}
+
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.open .dropdown-toggle.btn {
+    text-decoration: none;
+    outline: 0 !important;
+    box-shadow: none;
+}
+
+.btn {
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: .16s;
+    transition-duration: .16s;
+    -webkit-transition-property: background-color, color, border-color;
+    transition-property: background-color, color, border-color;
+    letter-spacing: 1px;
+    border-radius: 2px;
+}
+
+
+.btn-orange.btn-ghost {
+    color: #d4d4d4;
+    border-color: #d4d4d4;
+}
+
+.btn-orange.btn-ghost:hover {
+    color: #fff;
+    border-color: #00c4ef;
+    background-color: #00c4ef;
+}
+
+.btn-orange.btn-ghost:focus,
+.btn-orange.btn-ghost:active,
+.btn-orange.btn-ghost.active,
+.open .dropdown-toggle.btn-orange.btn-ghost {
+    color: #fff;
+    border-color: #00c4ef;
+    background-color: #00c4ef;
+}
+
+.btn.btn-ghost {
+    background-color: transparent;
+}
+
+
+/* Filterable Portfolio  
+   ================================================== */
+#container-mixitup {
+    margin-top: 50px;
+}
+
+#container-mixitup .mix {
+    display: none;
+    margin-bottom: 30px;
+}
+
+#container-mixitup.portfolio-fluid .mix {
+    margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+    .filter {
+        margin-bottom: 4px;
+    }
+}
+
+
+#homepage_banner {
+	margin-top:0px;
+    background: #0068ad url(../images/cover.jpg);
+    background-size: cover;
+    padding: 30px 0px;
+    min-height: 600px;
+}
+
+#partners{
+
+}
+
+
+.bus-title{
+	padding-top:15px;
+	padding-bottom:15px;
+  color:#fffc00;
+  font-weight:bold;
+}
+
+.route-filter a{
+	cursor: pointer;
+	text-decoration: none;
+}
+.route-filter .well{
+	margin-top:10px;
+	margin-bottom:10px;
+	background-color: rgba(0, 104, 173, 0.7);
+	color: #fff;
+}
+
+.ticket-border{
+	text-align:center;
+	border-radius :3px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding-bottom: 10px;
+}
+
+section {
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+
+
+
+#amb_section_masthead .container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#amb_section_masthead .amb-masthead-inner {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#amb_site_content .container {
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+#amb_site_home_inner {
+    padding-left: 15px;
+    padding-right: 15px;
+}

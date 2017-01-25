@@ -1,0 +1,22 @@
+[
+	{"RouteID":1,"fromCity":"Yangon","toCity":"Mandalay"},
+	{"RouteID":2,"fromCity":"Yangon","toCity":"Bagan"},
+	{"RouteID":3,"fromCity":"Yangon","toCity":"NayPyiTaw"},
+	{"RouteID":4,"fromCity":"Yangon","toCity":"Taunggyi"},
+	{"RouteID":5,"fromCity":"Mandalay","toCity":"Yangon"},
+	{"RouteID":6,"fromCity":"Mandalay","toCity":"Bagan"},
+	{"RouteID":7,"fromCity":"Mandalay","toCity":"NayPyiTaw"},
+	{"RouteID":8,"fromCity":"Mandalay","toCity":"Taunggyi"},
+	{"RouteID":9,"fromCity":"Bagan","toCity":"Yangon"},
+	{"RouteID":10,"fromCity":"Bagan","toCity":"Mandalay"},
+	{"RouteID":11,"fromCity":"Bagan","toCity":"NayPyiTaw"},
+	{"RouteID":12,"fromCity":"Bagan","toCity":"Taunggyi"},
+	{"RouteID":13,"fromCity":"NayPyiTaw","toCity":"Yangon"},
+	{"RouteID":14,"fromCity":"NayPyiTaw","toCity":"Mandalay"},
+	{"RouteID":15,"fromCity":"NayPyiTaw","toCity":"Bagan"},
+	{"RouteID":16,"fromCity":"NayPyiTaw","toCity":"Taunggyi"},
+	{"RouteID":17,"fromCity":"Taunggyi","toCity":"Yangon"},
+	{"RouteID":18,"fromCity":"Taunggyi","toCity":"Mandalay"},
+	{"RouteID":19,"fromCity":"Taunggyi","toCity":"Bagan"},
+	{"RouteID":21,"fromCity":"Taunggyi","toCity":"NayPyiTaw"}
+]

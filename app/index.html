@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ambApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <title>AMB Tour - Online Booking for your travel</title>
+    
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body ng-controller="homeController">  
+  <div id="topbar" class="topbar-wrapper">
+    <div class="alert-topbar navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="pull-right">
+            Any question?
+            <i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 16px"></i> / Contact :<a href="tel:093423423">(+95)99234234234</a> | info@ambmyanmartravels.com
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header id="header" class="amb_nav_header" role="banner">
+      <nav class="navbar amb-navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          <base href="/ambbooking/app/">
+            <a class="navbar-brand " href="#" title="AMB Travel & Tour"><img src="assets/images/logov1.png" class="amblogo" alt="AMB Travel & Tour"/></a><span class="name pull-left">AMB TOUR</span>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown nav-item-bus">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bus Ticket <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Bus Ticket Booking</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Bus Operators</a></li>
+                  <li><a href="#">Bus Stations List</a></li>
+                </ul>
+              </li>
+              <li><a href="#tourpackages">Tour Packages</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#contactus">Contact Us</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+  </header>
+    <div id="homepage_banner" class="row">
+      <div class="container">
+          <!-- NAVIGATION -->
+            <h1>{{ message }}</h1>
+          <h4 class="text-center bus-title">Bus Ticket to Popular Destinations in Myanmar</h4>
+            <ul class="list-unstyled text-center text-theme-lg">
+              <li class="filter btn btn-ghost btn-orange" data-filter=".yangon">Yangon</li>
+              <li class="filter btn btn-ghost btn-orange" data-filter=".mandalay">Mandalay</li>
+              <li class="filter btn btn-ghost btn-orange" data-filter=".bagan">Bagan</li>
+              <li class="filter btn btn-ghost btn-orange" data-filter=".naypyitaw">NayPyiTaw</li>
+              <li class="filter btn btn-ghost btn-orange" data-filter=".taunggyi">Taunggyi</li>
+            </ul>
+        <!-- BUS ROUTE LIST -->
+      <div id="container-mixitup" class="container-fluid route-filter">
+        <div class="row">
+
+          <div class="mix yangon all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+            <a href="#yangon-to-mandalay" class="img-wrapper">
+              <div class="well">Yangon to Mandalay</div>
+              <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix yangon all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#yangon-to-bagan" class="img-wrapper">
+               <div class="well">Yangon to Bagan</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix yangon all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#yangon-to-naypyitaw" class="img-wrapper">
+               <div class="well">Yangon to NayPyiTaw</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix yangon all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+            <a href="#yangon-to-taunggyi" class="img-wrapper">
+               <div class="well">Yangon to TaungGyi</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix mandalay all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#mandalay-to-yangon" class="img-wrapper">
+               <div class="well">Mandalay to Yangon</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix mandalay all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+            <a href="#mandalay-to-bagan" class="img-wrapper">
+               <div class="well">Mandalay to Bagan</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix mandalay all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#mandalay-to-naypyitaw" class="img-wrapper">
+               <div class="well">Mandalay to NayPyiTaw</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix mandalay all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#mandalay-to-taunggyi" class="img-wrapper">
+               <div class="well">Mandalay to Taunggyi</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix bagan all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#bagan-to-yangon" class="img-wrapper">
+               <div class="well">Bagan to Yangon</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix bagan all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#bagan-to-mandalay" class="img-wrapper text-center">
+               <div class="well">Bagan to Mandalay</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix bagan all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#bagan-to-naypyitaw" class="img-wrapper">
+               <div class="well">Bagan to NayPyiTaw</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix bagan all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+            <a href="#bagan-to-taunggyi" class="img-wrapper">
+               <div class="well">Bagan to Taunggyi</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>
+          </div>
+
+          <div class="mix naypyitaw all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#naypyitaw-to-yangon" class="img-wrapper">
+               <div class="well">NayPyiTaw to Yangon</div>
+                <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>  
+          </div>
+          <div class="mix naypyitaw all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#naypyitaw-to-Mandalay" class="img-wrapper">
+               <div class="well">NayPyiTaw to Mandalay</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>  
+          </div>
+          <div class="mix naypyitaw all col-sm-3 col-xs-12 ticket-border "  style="display: inline-block;">
+             <a href="#naypyitaw-to-naypyitaw" class="img-wrapper">
+               <div class="well">NayPyiTaw to Bagan</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>  
+          </div>
+          <div class="mix naypyitaw all col-sm-3 col-xs-12 ticket-border " style="display: inline-block;">
+             <a href="#naypyitaw-to-taunggyi" class="img-wrapper">
+               <div class="well">NayPyiTaw to Taunggyi</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>  
+          </div>
+          <div class="mix taunggyi all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#taunggyi-to-yangon" class="img-wrapper">
+               <div class="well">Taunggyi to Yangon</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>  
+          </div>
+         <div class="mix taunggyi all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#taunggyi-to-mandalay" class="img-wrapper">
+               <div class="well">Taunggyi to Mandalay</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>  
+          </div>
+         <div class="mix taunggyi all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#taunggyi-to-bagan" class="img-wrapper">
+               <div class="well">Taunggyi to Bagan</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>  
+          </div>
+         <div class="mix taunggyi all col-sm-3 col-xs-12 ticket-border" style="display: inline-block;">
+             <a href="#taunggyi-to-naypyitaw" class="img-wrapper">
+               <div class="well">Taunggyi to NayPyiTaw</div>
+               <button class="btn btn-success btn-sm" >Book Ticket</button>
+            </a>  
+          </div>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div id="main-content">
+        <section id="tourpackages">
+          <div class="container">          
+            <h1>Tour Packages</h1>
+          </div>
+        </section>
+        <section id="partners"></section>
+        <section id="aboutus"></section>
+        <section id="newspress"></section>
+    </div>
+    <!-- footer -->
+    <footer id="amb_footer" class="amb-footer">
+        <div class="amb-footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 visible-xs">
+                        <div class="support-links">
+                            <h4>Need help / got a question?</h4>
+                            <p><a href="mailto:info@ambmyanmartravels.com">info@ambmyanmartravels.com</a></p>
+                            <p><strong>Myanmar</strong></p>
+                            <p>
+                                </p><ul class="list-unstyled">
+                                        <li><i class="fa fa-whatsapp" aria-hidden="true"></i> Viber :<a href="tel:+959775602007">(+95)9775602007</a> </li>
+                                    <li><a href="tel:+959963015532">(+95)9963015532</a></li>
+                                </ul>
+                            <p></p>
+                            <p>Singapore: <a href="tel:+6593374790">(+65) 93374790</a></p>
+                            <p>
+                                <br>
+                                No.12(B), Ground Floor, 9th street, <br>Lanmadaw Township<br> Yangon, Myanmar
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        <div class="support-links">
+                            <h4>AMB TOUR</h4>
+
+                            <p>
+                                </p><ul class="list-unstyled">
+                                    <li><a href="/p/about" target="_blank">About Us</a></li>
+                                    <li><a href="http://blog.ambtour.com" target="_blank">Blog</a></li>
+                                    
+                                </ul>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-3">
+                        <div class="support-links">
+                            <h4>Useful Information</h4>
+                            <p>
+                                </p><ul class="list-unstyled">
+                                    <li><a href="http://www.ambtour.com/p/dos-donts-tourists-myanmar" target="_blank">Myanmar Dos &amp; Don'ts For Tourists</a></li>
+                                    <li><a href="http://www.myanmartourism.org/" target="_blank">Ministry of Hotels &amp; Tourism</a></li>
+                                    <li><a href="http://www.tourismmyanmar.org/" target="_blank">Myanmar Tourism Federation</a></li>
+                                    <li><a href="http://evisa.moip.gov.mm/" target="_blank">Myanmar eVisa</a></li>
+                                    
+                                    
+                                </ul>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3 separator">
+                        <div class="support-links">
+                            <h4>Popular Booking</h4>
+                            <p>
+                                </p><ul class="list-unstyled">
+                                    <li><a href="http://www.ambtour.com/booking/bus-ticket-yangon-bagan" target="_blank">Bus Yangon to Bagan</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/bus-ticket-yangon-mandalay" target="_blank">Bus Yangon to Mandalay</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/bus-ticket-bagan-yangon" target="_blank">Bus Bagan to Yangon</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/bus-ticket-bagan-taunggyi" target="_blank">Bus Bagan to Kalaw / Taunggyi / Inle</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/bus-ticket-bagan-mandalay" target="_blank">Bus Bagan to Mandalay</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/bus-ticket-mandalay-yangon" target="_blank">Bus Mandalay to Yangon</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/bus-ticket-mandalay-bagan" target="_blank">Bus Mandalay to Bagan</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/bus-ticket-mandalay-taunggyi" target="_blank">Bus Mandalay to Taunggyi</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/airport-transfer-service-mandalay" target="_blank">Mandalay Airport Transfer Service</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/airport-transfer-service-bagan" target="_blank">Bagan Airport Transfer Service</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/airport-transfer-service-yangon" target="_blank">Yangon Airport Transfer Service</a></li>
+                                    <li><a href="http://www.ambtour.com/booking/bagan-car-rental" target="_blank">Car Rental Bagan</a></li>
+                                </ul>
+                            <p></p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-4 hidden-xs separator">
+                        <div class="support-links">
+                            <h4>Need help / got a question?</h4>
+                            <p><a href="mailto:info@ambmyanmartravels.com">info@ambmyanmartravels.com</a></p>
+                            <p><strong>Myanmar</strong></p>
+                            <p>
+                                </p><ul class="list-unstyled">
+                                        <li><i class="fa fa-whatsapp" aria-hidden="true"></i> / Viber :<a href="tel:+959775602007">(+95)9775602007</a> </li>
+                                    <li>Tel: <a href="tel:+959963015532">(+95)9963015532</a></li>
+                                </ul>
+                            <p></p>
+                            <p>Singapore: <a href="tel:+6593374790">(+65) 93374790</a></p>
+                                <p>
+                                    <br>
+                                    ADDRESS:<br>
+                                    No. 97(B), Ground Floor, Wardan Street, <br>Lanmadaw Township<br> Yangon, Myanmar
+                                </p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="evnk-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-md-push-7">
+
+                        
+                        <ul class="list-unstyled  home-social">
+                            <li><a href="http://www.twitter.com/ambtour" class="twitter"></a></li>
+                            <li><a href="http://www.facebook.com/ambtour" class="facebook">&nbsp;</a></li>
+                            <li><a href="#contact" class="mail">&nbsp;</a></li>
+                        </ul>
+
+                    </div>
+                    <div class="col-md-7 col-md-pull-5">
+                        <a href="http://www.ambtour.com" class="evnk-logo regular"></a>
+                        <ul class="footer-links">
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#privacy">Privacy Policy</a></li>
+                            <li><a href="#terms">Terms of Service</a></li>
+                        </ul>
+                        <p class="copyright">© 2016 AMB Tour. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end here-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.mixitup.js"></script>
+    <script src="assets/js/amb_main.js"></script>
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="assets/js/angular.js"></script>
+    <script src="assets/angular/angular-route.min.js"></script>
+    <script src="assets/angular/angular-resource.min.js"></script>
+
+    <script src="app.module.js"></script>
+    <script src="app.routes.js"></script>
+    <script src="components/home/homeController.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    
+  </body>
+</html>
