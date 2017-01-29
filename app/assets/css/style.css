@@ -166,8 +166,8 @@ background-image: none;
 
 
 .btn-orange.btn-ghost {
-    color: #d4d4d4;
-    border-color: #d4d4d4;
+    color: #f3f3f3;
+    border-color: #f3f3f3;
 }
 
 .btn-orange.btn-ghost:hover {
@@ -246,8 +246,8 @@ background-image: none;
 .ticket-border{
 	text-align:center;
 	border-radius :3px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	padding-bottom: 10px;
+	/*border: 1px solid rgba(0, 0, 0, 0.1);*/
+  padding:5px;
 }
 
 section {
@@ -255,6 +255,12 @@ section {
   padding-bottom:20px;
 }
 
+.route{
+  padding: 10px;
+  background-color: #fefefe;
+  border-radius: 5px;
+  color: #fff;
+}
 
 
 
@@ -274,4 +280,167 @@ section {
 #amb_site_home_inner {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+
+
+.masthead-home {
+    margin-top: 0px;
+    /*background: #FF8C00 url(https://scapetour.s3.amazonaws.com/u/4/image_1603124245203_myanmar-colorful-banner.jpg);*/
+    /*background: #FF8C00 url(http://scapetour.s3.amazonaws.com/u/1/image_1603229151901_scapetour-masthead2.jpg);*/
+    background: #0068ad url(../images/cover.jpg);
+    background-size: cover;
+    padding: 30px 0px;
+    min-height: 480px;
+}
+.masthead-home .jumbotron {
+    padding-top: 0px;
+    background: #D2E4CB;
+    border: 1px solid #eee;
+    
+}
+    .masthead-home .hero {
+        background:rgba(0, 104, 173, 0.5);
+        margin-top: 100px; margin-bottom: 20px; padding:20px 20px; max-width:90%;
+    }
+    .masthead-home h1 {
+        font-size: 42px;
+        color: #fff;
+    }
+@media (max-width: 360px) {
+    .masthead-home {
+        padding: 10px 0px;
+        min-height: 280px;
+    }
+        .masthead-home h1 {
+            font-size: 22px;
+        }
+    .masthead-home .hero {
+        margin-top: 80px; margin-bottom: 10px; padding:10px 10px; max-width:95%;
+    }
+}
+
+
+.row-bus {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+.row-bus h5 {
+      color: #0ac;
+}
+
+
+.footer-links {
+  margin: 10px 0;
+  padding-left: 0;
+}
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
+}
+
+
+.amb-site-wrapper {
+    background: transparent;
+    margin-bottom: 0px;
+}
+
+.amb-site-wrapper .amb-inner-wrapper {
+    display: inline-block;
+    width: 100%;
+    min-height: 400px;
+    margin: 0px 0px 10px 0px;
+    background: #fff;
+}
+
+
+.amb-masthead {
+    margin-top: 0px;
+}
+
+.amb-masthead-inner {
+   min-height: 180px !important;
+   color:#fff;
+   /*background: rgba(255, 140, 0,0.9) !important;*/
+   background: #0ac !important;
+}
+.amb-masthead-inner .amb-masthead-coverimage {
+    margin: -15px;
+    max-height: 380px;
+    overflow: hidden;
+}
+.amb-masthead .amb-event-title-box {
+    margin-top: 20px;
+}
+
+
+
+.ticket-widget-wrapper { border: 1px solid #f0f0f0; padding: 0px; margin-bottom: 20px; }
+.ticket-widget-wrapper .ticket-widget-heading { margin: 0 auto; padding: 10px 5px; min-height: 50px; border-bottom: 1px solid #ddd; background: #FEFEFE !important;}
+.ticket-widget-wrapper .ticket-widget-heading .title { float: left; margin-top: 5px; font-size: 18px;}
+.ticket-widget-wrapper .ticket-widget-heading .logo { float: right; font-size: 11px;}
+.ticket-widget-wrapper .ticket-widget-heading .logo img { width: 80px; margin-top: -3px}
+.ticket-widget-wrapper .ticket-widget-body {
+    width: 100%;
+}
+.ticket-widget-wrapper .ticket-table { margin-bottom: 0px;}
+.ticket-widget-wrapper .ticket-table tr { border-bottom: 1px solid #f0f0f0;}
+.ticket-widget-wrapper .ticket-table td { border-bottom: 1px solid #f0f0f0; font-size: 15px;}
+.ticket-widget-wrapper .ticket-table tr.ticket-head { background: #f7f7f7; font-size: 15px; font-weight: bold; }
+.ticket-widget-wrapper .ticket-table tr.ticket-head > th {padding: 12px 5px; border-bottom: 1px solid #eee; font-size: 16px}
+.ticket-widget-wrapper .ticket-table th.th-type  { width: 50%; vertical-align: middle;}
+.ticket-widget-wrapper .ticket-table th.th-ends  { width: 25%; text-align: left; vertical-align: middle;}
+.ticket-widget-wrapper .ticket-table th.th-price { width: 15%; text-align: center; vertical-align: middle;}
+.ticket-widget-wrapper .ticket-table th.th-tax  { width: 10%; text-align: right; vertical-align: middle;}
+.ticket-widget-wrapper .ticket-table th.th-qty  { width: 8%; text-align: right; vertical-align: middle;}
+    .ticket-widget-wrapper .ticket-table td {
+        padding: 12px 5px;
+    }
+.ticket-widget-wrapper .ticket-table td.td-type { width: 50%; vertical-align: middle;}
+.ticket-widget-wrapper .ticket-table td.td-type > .ticket-name { color: #F36C21; font-weight: bold; }
+.ticket-widget-wrapper .ticket-table td.td-ends { width: 25%; text-align: left; vertical-align: top;}
+.ticket-widget-wrapper .ticket-table td.td-price { width: 15%; text-align: center; vertical-align: top;}
+.ticket-widget-wrapper .ticket-table td.td-tax { width: 10%; text-align: right; vertical-align: top;}
+.ticket-widget-wrapper .ticket-table td.td-qty { width: 8%; text-align: right; vertical-align: top; }
+.ticket-widget-wrapper .ticket-table td.td-qty > .input-quantity { float: right; width: 60px; height: 34px; font-size: 16px;}
+.ticket-widget-wrapper .ticket-table .tax-desc { font-size: 0.8em; vertical-align: top;}
+.ticket-widget-wrapper .ticket-table .ticket-desc { margin-top: 5px; font-size: 13px; color: #666; width: 90%;}
+.ticket-widget-wrapper .ticket-table .input-donation { padding: 2px 4px; width: 56px; text-align: right;}
+.ticket-widget-wrapper .ticket-table .donation { margin-top: 2px; font-size: 12px; vertical-align: top;}
+.ticket-widget-wrapper .ticket-table .donation-comment { font-size: 0.8em; color: #F36C21}
+.ticket-widget-wrapper select.quantity { height: 30px; padding: 3px; font-size: 13px; text-align: right}
+.ticket-widget-wrapper .ticket-widget-body .discount-row{
+    padding: 10px;
+}
+.ticket-widget-wrapper .ticket-widget-body .discount-row label { float:left; margin-right: 10px;}
+.ticket-widget-wrapper .ticket-widget-body .discount-row .input-discount { display: inline-block; width: 140px; height: 30px;
+padding: 4px 6px;}
+.ticket-widget-wrapper .ticket-widget-body .discount-row .btn-discount { float: left;}
+.ticket-widget-wrapper .ticket-widget-body .action-row{
+    padding: 10px 10px;
+    background: #f7f7f7;
+    border-top: 1px solid #F0F0F0;
+    border-bottom: 1px solid #F0F0F0;
+}
+.ticket-widget-wrapper .ticket-widget-body .btn-register {
+    padding: 10px 40px;
+    font-size: 18px;
+}
+.ticket-widget-wrapper .ticket-widget-body .invitation-row{
+    padding-right : 5px;
+    padding-left:10px;
+    padding-bottom:10px;
+    padding-top:10px;
+}
+.ticket-widget-wrapper .ticket-widget-body .invitation-row  label { float:left; margin-right: 10px;}
+.ticket-widget-wrapper .ticket-widget-body .invitation-row  .input-invitation 
+{ 
+ display: inline-block;
+ width: 170px;
+ height: 30px;
+ padding: 4px 6px;
 }

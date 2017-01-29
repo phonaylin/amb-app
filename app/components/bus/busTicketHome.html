@@ -1,0 +1,35 @@
+<div class="container" ng-controller="busController">
+<div class="content-wrapper">
+            <div class="page-header">
+                <h1>Book Bus Tickets in Myanmar</h1>
+				<h5>Easy and Hassle-Free bus booking service in Myanmar</h5>
+            </div>
+            <div style="padding: 20px; min-height:200px; border: 1px solid #ddd; background: #eee;">
+                <div role="tabpanel">
+                    <uib-tabset active="active">
+                        <uib-tab index="$index + 1" ng-repeat="tab in busRouteList" heading="{{tab.RouteName}}" disable="tab.disabled">
+                            <div class="tab-content" style="background: #fff">
+                                <div class="row row-bus" style="margin: 0px 10px; padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #ccc;" ng-repeat="route in tab.RouteList">
+                                        <div class="col-xs-7 col-sm-9">
+                                            <h5>{{route.fromCity}} -> {{route.toCity}}</h5>
+                                        </div>
+                                        <div class="col-xs-3 col-sm-2">
+                                            <a href="#booking/bus-ticket/{{route.fromCity}}-{{route.toCity}}" class="btn btn-success btn-sm">Book Ticket</a>
+                                        </div>
+                                </div>
+                            </div>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+			<br>
+			<div>
+				<h4>Why should you book your bus ticket with us?</h4>
+				<div>
+					<p>Our bus ticket booking (reservation) service will save your time and hassle of finding a bus ticketing agent or travel agent, and making a trip to buy bus ticket from ticketing agent after you arrive in Myanmar.</p><p>
+					</p><p>We aim to make your travel arrangement more convenient and save time with our easy online booking service so that you can enjoy your precious holiday period more while you are in Myanmar instead of rushing to do your booking during your time in Myanmar.</p>
+				</div>
+			</div>
+			
+        </div>
+</div>

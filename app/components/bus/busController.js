@@ -1,4 +1,9 @@
-[
+busModule.controller('busController', ['$scope','$routeParams','$log','busServices', function ($scope,$routeParams,$log,busServices) {
+	$scope.bus = 'This is bus';
+	$scope.busRouteList = busServices.getBusRouteList();
+	$scope.$log= $scope.busRouteList;
+
+	$scope.busRouteList = [
 	{
 		"RouteName": "Yangon",
 		"RouteList":[
@@ -47,3 +52,4 @@
 	}
 	
 ]
+}])
