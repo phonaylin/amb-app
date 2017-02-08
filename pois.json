@@ -1,0 +1,114 @@
+{
+  "_embedded": {
+    "pOIs": [
+      {
+        "title": "Yangon",
+        "description": "Yangon",
+        "map": null,
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/pOIs/1"
+          },
+          "pOI": {
+            "href": "http://localhost:9000/pOIs/1"
+          }
+        }
+      },
+      {
+        "title": "Mandalay",
+        "description": "Mandalay",
+        "map": null,
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/pOIs/2"
+          },
+          "pOI": {
+            "href": "http://localhost:9000/pOIs/2"
+          }
+        }
+      },
+      {
+        "title": "Inle",
+        "description": "Inle",
+        "map": null,
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/pOIs/3"
+          },
+          "pOI": {
+            "href": "http://localhost:9000/pOIs/3"
+          }
+        }
+      },
+      {
+        "title": "Bagan",
+        "description": "Bagan",
+        "map": null,
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/pOIs/4"
+          },
+          "pOI": {
+            "href": "http://localhost:9000/pOIs/4"
+          }
+        }
+      },
+      {
+        "title": "Pyin Oo Lwin",
+        "description": "Pyin Oo Lwin",
+        "map": null,
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/pOIs/5"
+          },
+          "pOI": {
+            "href": "http://localhost:9000/pOIs/5"
+          }
+        }
+      },
+      {
+        "title": "Naypyitaw",
+        "description": "Naypyitaw",
+        "map": null,
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/pOIs/6"
+          },
+          "pOI": {
+            "href": "http://localhost:9000/pOIs/6"
+          }
+        }
+      },
+      {
+        "title": "Taunggyi",
+        "description": "Taunggyi",
+        "map": null,
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/pOIs/7"
+          },
+          "pOI": {
+            "href": "http://localhost:9000/pOIs/7"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "http://localhost:9000/pOIs"
+    },
+    "profile": {
+      "href": "http://localhost:9000/profile/pOIs"
+    },
+    "search": {
+      "href": "http://localhost:9000/pOIs/search"
+    }
+  },
+  "page": {
+    "size": 20,
+    "totalElements": 7,
+    "totalPages": 1,
+    "number": 0
+  }
+}
