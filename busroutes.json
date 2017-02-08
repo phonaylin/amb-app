@@ -1,0 +1,186 @@
+{
+  "_embedded": {
+    "busroutes": [
+      {
+        "fare": "USD100.00",
+        "dayOfWeek": 1,
+        "originPOI": {
+          "title": "Yangon",
+          "description": "Yangon",
+          "map": null
+        },
+        "destPOI": {
+          "title": "Mandalay",
+          "description": "Mandalay",
+          "map": null
+        },
+        "bus": {
+          "licenseNumber": "9F/***",
+          "capacity": 10,
+          "busClass": "Normal",
+          "busClassDescription": "Express Bus 2+2",
+          "busAmenities": [
+            "Aircon",
+            "Movie",
+            "Towel"
+          ]
+        },
+        "departureTime": "10:59 PM",
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/busroutes/1"
+          },
+          "busRoute": {
+            "href": "http://localhost:9000/busroutes/1{?projection}",
+            "templated": true
+          },
+          "bus": {
+            "href": "http://localhost:9000/busroutes/1/bus"
+          },
+          "destPOI": {
+            "href": "http://localhost:9000/busroutes/1/destPOI"
+          },
+          "originPOI": {
+            "href": "http://localhost:9000/busroutes/1/originPOI"
+          }
+        }
+      },
+      {
+        "fare": "USD200.00",
+        "dayOfWeek": 1,
+        "originPOI": {
+          "title": "Yangon",
+          "description": "Yangon",
+          "map": null
+        },
+        "destPOI": {
+          "title": "Mandalay",
+          "description": "Mandalay",
+          "map": null
+        },
+        "bus": {
+          "licenseNumber": "9F/***",
+          "capacity": 20,
+          "busClass": "First Class",
+          "busClassDescription": "Express Bus with large seat 2+1",
+          "busAmenities": [
+            "Aircon",
+            "Towel"
+          ]
+        },
+        "departureTime": "10:59 PM",
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/busroutes/2"
+          },
+          "busRoute": {
+            "href": "http://localhost:9000/busroutes/2{?projection}",
+            "templated": true
+          },
+          "bus": {
+            "href": "http://localhost:9000/busroutes/2/bus"
+          },
+          "destPOI": {
+            "href": "http://localhost:9000/busroutes/2/destPOI"
+          },
+          "originPOI": {
+            "href": "http://localhost:9000/busroutes/2/originPOI"
+          }
+        }
+      },
+      {
+        "fare": "USD200.00",
+        "dayOfWeek": 1,
+        "originPOI": {
+          "title": "Yangon",
+          "description": "Yangon",
+          "map": null
+        },
+        "destPOI": {
+          "title": "Inle",
+          "description": "Inle",
+          "map": null
+        },
+        "bus": {
+          "licenseNumber": "9F/***",
+          "capacity": 10,
+          "busClass": "Normal",
+          "busClassDescription": "Express Bus 2+2",
+          "busAmenities": [
+            "Aircon",
+            "Movie",
+            "Towel"
+          ]
+        },
+        "departureTime": "10:59 PM",
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/busroutes/3"
+          },
+          "busRoute": {
+            "href": "http://localhost:9000/busroutes/3{?projection}",
+            "templated": true
+          },
+          "bus": {
+            "href": "http://localhost:9000/busroutes/3/bus"
+          },
+          "destPOI": {
+            "href": "http://localhost:9000/busroutes/3/destPOI"
+          },
+          "originPOI": {
+            "href": "http://localhost:9000/busroutes/3/originPOI"
+          }
+        }
+      },
+      {
+        "fare": "USD700.00",
+        "dayOfWeek": 1,
+        "originPOI": {
+          "title": "Yangon",
+          "description": "Yangon",
+          "map": null
+        },
+        "destPOI": {
+          "title": "Mandalay",
+          "description": "Mandalay",
+          "map": null
+        },
+        "bus": {
+          "licenseNumber": "9F/***",
+          "capacity": 10,
+          "busClass": "Normal",
+          "busClassDescription": "Express Bus 2+2",
+          "busAmenities": [
+            "Aircon",
+            "Movie",
+            "Towel"
+          ]
+        },
+        "departureTime": "08:39 PM",
+        "_links": {
+          "self": {
+            "href": "http://localhost:9000/busroutes/4"
+          },
+          "busRoute": {
+            "href": "http://localhost:9000/busroutes/4{?projection}",
+            "templated": true
+          },
+          "bus": {
+            "href": "http://localhost:9000/busroutes/4/bus"
+          },
+          "destPOI": {
+            "href": "http://localhost:9000/busroutes/4/destPOI"
+          },
+          "originPOI": {
+            "href": "http://localhost:9000/busroutes/4/originPOI"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "http://localhost:9000/busroutes/search/findByOriginPOI?origin=http://localhost:9000/pOIs/1&projection=summary"
+    }
+  }
+}
