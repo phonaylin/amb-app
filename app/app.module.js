@@ -1,5 +1,4 @@
-var ambApp = angular.module('ambApp', ['ngRoute','ngResource','ambApp.Route','busModule','ui.bootstrap']);
-
+var ambApp = angular.module('ambApp', ['ngRoute','ngResource','ambApp.Route','busModule','ui.bootstrap','moment-picker']);
 ambApp.config(['$routeProvider', '$locationProvider','$httpProvider', function ($routeProvider, $locationProvider,$httpProvider) {
 	// $httpProvider.defaults.useXDomain = true;
 	$locationProvider.hashPrefix('');
@@ -8,7 +7,7 @@ ambApp.config(['$routeProvider', '$locationProvider','$httpProvider', function (
 }]);
 
 
-// ambApp.run(function ($rootScope,busService,$http,$location,$route, $timeout) {
+// ambApp.run(function ($rootScope,busService,$http,$location,$route) {
 
 
 // });

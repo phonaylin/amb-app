@@ -39,10 +39,10 @@
 	{
 		"RouteName": "Taunggyi",
 		"RouteList":[
-				{"RouteID":13,"RouteCode":"TGYYGN","fromCity":"Yangon","toCity":"Yangon"},
-				{"RouteID":14,"RouteCode":"TGYMDY","fromCity":"Yangon","toCity":"Mandalay"},
-				{"RouteID":15,"RouteCode":"TGYBGN","fromCity":"Yangon","toCity":"Bagan"},
-				{"RouteID":16,"RouteCode":"TGYNPT","fromCity":"Yangon","toCity":"NayPyiTaw"}
+				{"RouteID":13,"RouteCode":"TGYYGN","fromCity":"Taunggyi","toCity":"Yangon"},
+				{"RouteID":14,"RouteCode":"TGYMDY","fromCity":"Taunggyi","toCity":"Mandalay"},
+				{"RouteID":15,"RouteCode":"TGYBGN","fromCity":"Taunggyi","toCity":"Bagan"},
+				{"RouteID":16,"RouteCode":"TGYNPT","fromCity":"Taunggyi","toCity":"NayPyiTaw"}
 			]
 	}
 	

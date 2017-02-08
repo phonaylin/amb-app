@@ -35,6 +35,10 @@ function config ($routeProvider,$httpProvider) {
 		templateUrl :'components/bus/busTicketDetailView.html',
 		controller: 'busController'
 	})
+	.when('/booking/register/:param',{
+		templateUrl :'components/bus/busTicketPayment.html',
+		controller: 'busController'
+	})
 	.when('/bus-operators',{
 		templateUrl :'components/bus/busOperatorsView.html',
 		controller: 'busController'

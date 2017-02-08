@@ -262,20 +262,17 @@ section {
   color: #fff;
 }
 
-
-
-#amb_section_masthead .container {
-    padding-left: 0px;
-    padding-right: 0px;
-}
 #amb_section_masthead .amb-masthead-inner {
     padding-left: 15px;
     padding-right: 15px;
 }
-#amb_site_content .container {
-    padding-left: 0px;
-    padding-right: 0px;
 
+
+#amb_site_home {
+  line-height: 21px;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  color :#333;
 }
 #amb_site_home_inner {
     padding-left: 15px;
@@ -377,7 +374,39 @@ section {
     margin-top: 20px;
 }
 
+.amb-masthead .amb-masthead-inner {
+        display: block;
+        width: 100%;
+        min-height: 220px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: #0000;
+        background-image: -webkit-gradient(radial, center top, 0, center top, 480, color-stop(0.3, #0000), color-stop(1, #fff));
+        background-image: -webkit-radial-gradient(center top, ellipse farthest-side, #0000 30%, #fff 100%);
+        background-image: -moz-radial-gradient(center top, ellipse farthest-side, #0000 30%, #fff 100%);
+        background-image: -ms-radial-gradient(center top, ellipse farthest-side, #0000 30%, #fff 100%);
+        background-image: -o-radial-gradient(center top, ellipse farthest-side, #0000 30%, #fff 100%);
+        background-image: radial-gradient(center top, ellipse farthest-side, #0000 30%, #fff 100%);
+        /*border-bottom: 1px solid #eee;*/
+        color: #0000;
+    }
 
+.amb-footer-top{
+  padding: 6px 0px;
+  background: #E1F4F6;
+  /*rgba(0, 148, 255,0.1)*/
+  font-size: 12px;
+  color: #666;
+}
+
+.amb-footer-top a {
+  color: #0ac;
+}
+
+.ticket-widget-wrapper .row-heading {
+    background: #f7f7f7;
+    font-weight: bold;
+}
 
 .ticket-widget-wrapper { border: 1px solid #f0f0f0; padding: 0px; margin-bottom: 20px; }
 .ticket-widget-wrapper .ticket-widget-heading { margin: 0 auto; padding: 10px 5px; min-height: 50px; border-bottom: 1px solid #ddd; background: #FEFEFE !important;}
@@ -444,3 +473,241 @@ padding: 4px 6px;}
  height: 30px;
  padding: 4px 6px;
 }
+
+.ticket-widget-wrapper .row-ticket .ticket-name {
+        font-size: 1em;
+        font-weight: bold;
+        color: #0068ad;
+    }
+
+ .ticket-widget-wrapper .row-ticket .ticket-desc {
+        font-size: 0.9em;
+    }
+
+    .ticket-widget-wrapper .row-ticket .col-ticket-name .ticket-details {
+        margin-top: 10px;
+        padding-top: 10px;
+        font-size: 0.9em;
+        color: #222;
+    }
+
+
+.amb-inner-wrapper .details {
+    padding: 18px 0px;
+    background: #ffffff;
+}
+
+.amb-inner-wrapper .details .details-inner {
+        padding-left: 12px;
+        padding-right: 12px;
+}
+
+.order-cart-summary .ticket-widget-heading { 
+        margin: 0 auto; 
+        padding: 8px 10px; 
+        min-height: 30px; 
+        border-bottom: 1px solid #ddd;  
+        font-size: 18px;
+}
+
+
+
+.order-cart-summary { border: 1px solid #f0f0f0; padding: 0px; margin-bottom: 20px; }
+
+
+.order-cart-summary .ticket-widget-body > table { margin-bottom: 0px;}
+.order-cart-summary .ticket-widget-body > table tfoot tr { background: #fefefe}
+.order-cart-summary .ticket-widget-body > table tfoot tr td.lbl {text-align: right; border-right: 1px solid #fff; }
+.order-cart-summary .ticket-widget-body > table tfoot tr td.amt {text-align: right;  }
+.order-cart-summary > .ticket-widget-body > table tfoot tr td.lbl.grandtotal{    font-weight:bold;    font-size: 15px;}
+.order-cart-summary .ticket-widget-body > table tfoot tr td.lbl {text-align: right;    border-right: 1px solid #fff;}
+.order-cart-summary .ticket-widget-body > table tfoot tr td.amt.grandtotal  {    font-weight:bold;font-size:15px;}
+.order-cart-summary .ticket-table td{    border-bottom: 1px solid #f0f0f0;}
+.order-cart-summary .ticket-widget-body > table tfoot tr.tr-grandtotal {background: #E1F4F6; border-top: 1px solid #BBD9DE;border-bottom: 1px solid #BBD9DE;}
+
+
+
+.amb-register-form .attendee-form-instruction {margin: 0px; padding: 5px 10px; background: #f9f9f9; color: #333; border: 1px solid #eee; border-bottom:none}
+.amb-register-form .attendee-form-instruction > h3 { margin-top:10px; font-size: 18px;}
+
+
+.amb-register-form .form-section { background-color: #fefefe; margin-bottom: 10px; padding: 10px 15px; border: 1px solid #eee;}
+.amb-register-form .form-section fieldset legend { padding:12px 0px; background-color: transparent; color: #08c; font-size: 22px; text-rendering: optimizelegibility;}
+.amb-register-form .form-section fieldset legend h3 { margin-top:0px; font-size: 18px;}
+.amb-register-form .form-section fieldset legend > .ticket-title-index { padding: 5px 20px 5px 10px; background: #00aadd ; color: white; border-radius:0px 20px 20px 0px; -webkit-border-radius: 0px 20px 20px 0px; -moz-border-radius: 0px 20px 20px 0px; }
+    .amb-register-form .form-section fieldset legend .ticket-title-name { line-height:1.5;
+    }
+.amb-register-form .form-section fieldset.focus { background: #f7f7f7;}
+.amb-register-form .form-group  { padding: 7px 0px; margin-bottom: 0px !important;}
+.amb-register-form .form-group.focus { background: #fffeee;}
+.amb-register-form .form-section .control-label {
+    margin-right: -20px;
+}
+.amb-register-form .form-section .control-label span.required {
+        margin-left: 5px;
+        color: red;
+    }
+    .amb-register-form .form-group .amb-controls .form-control.error
+    {
+        color: #B94A48;
+        border-color: #F36C21;
+    }
+    .amb-register-form .form-group .amb-controls input.form-control.error
+    {
+        background: #ffffee url(images/icon-input-error.png) no-repeat;
+        background-position: 99% 50%;
+    }
+    .amb-register-form .form-group .amb-controls label.error {
+        font-weight: normal;
+        color: #F36C21;
+    }
+.amb-register-form .form-group .amb-controls .help-date-display {
+    display:none; margin: 5px 0px; padding: 10px; border-left: 3px solid orange; background: #fff; max-width: 250px;
+}
+.amb-register-form .form-group .amb-controls .help-block {
+    clear: left;
+}
+
+.amb-register-form .form-group .checkbox, 
+.amb-register-form .form-group .radio {
+    display: inline-block;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    vertical-align: middle;
+    margin-top: 0;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.amb-register-form .form-group .checkbox.one,.amb-register-form .form-group .radio.one { float: left; width: 90%; }
+.amb-register-form .form-group .checkbox.two,.amb-register-form .form-group .radio.two {
+    float: left;
+    padding-top: 5px;
+    width: 45%;
+}
+.amb-register-form .form-group .checkbox.three, 
+.amb-register-form .form-group .radio.three {
+    float: left;
+    padding-top: 5px;
+    width: 27%;
+}
+.amb-register-form .form-group .checkbox.four, 
+.amb-register-form .form-group .radio.four {
+    float: left;
+    padding-top: 5px;
+    width: 20%;
+}
+.amb-register-form .form-group .checkbox.sidebyside, 
+.amb-register-form .form-group .radio.sidebyside {
+    float: left;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 5px;
+}
+.amb-register-form .form-group-subheader h5 {
+    font-size: 15px;
+    font-weight: bold;
+}
+.amb-register-form .form-group-subheader .subheader
+{
+    margin: 0 20px; border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+.amb-register-form .form-group-address .amb-controls .control-label {
+    padding-top: 0px;
+    margin-top: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.amb-register-form .form-group-address .amb-controls .city,.amb-register-form .form-group-address .amb-controls .zip  {
+    padding-right: 3px;
+}
+.amb-register-form .form-group-address .amb-controls .state,.amb-register-form .form-group-address .amb-controls .country  {
+    padding-left: 3px;
+}
+
+.amb-register-form .attendee-form-instruction {margin: 0px; padding: 5px 10px; background: #f9f9f9; color: #333; border: 1px solid #eee; border-bottom:none}
+.amb-register-form .attendee-form-instruction > h3 { margin-top:10px; font-size: 18px;}
+.amb-register-form .section-payment-options {
+}
+
+.amb-register-form .control-payment-options {
+    padding: 10px; border: 1px dotted #eee;
+}
+.amb-register-form .payment-option-title {
+    padding: 5px 20px 5px 10px; background:#e15252; color: white; border-radius:0px 20px 20px 0px; -webkit-border-radius: 0px 20px 20px 0px; -moz-border-radius: 0px 20px 20px 0px;
+}
+    .amb-register-form .control-payment-options .controls {
+        padding: 5px 0px 10px 0px; margin-left: 0px !important; margin-bottom: 5px; border-bottom: 1px solid  #eee;
+    }
+
+    .amb-register-form .section-action {
+        border: none;
+        text-align: right;
+    }
+
+    .amb-register-form .section-action .payment-summary {
+        margin: 20px 20px 20px 0px;
+    }
+
+    .amb-register-form .section-action .payment-summary > span {
+        font-size: 20px;
+    }
+
+    .amb-register-form .section-terms {
+        margin-top: 20px;
+        padding: 10px;
+        text-align: right;
+        font-size:0.9em;
+        background: #f7f7f7;
+    }
+
+.amb-register-form .btn-register {
+    padding: 8px 40px;
+    background: #20c05c;
+    color: white;
+    border: 1px solid #1fbc59;
+    -webkit-transition: background 0.25s ease-in-out 0;
+    -moz-transition: background 0.25s ease-in-out 0;
+    -o-transition: background 0.25s ease-in-out 0;
+    transition: background 0.25s ease-in-out 0;
+    font-size: 20px;
+}
+    .amb-register-form .btn-register:hover {
+        background: #24d665;
+        -webkit-transition: background 0.25s ease-in-out 0;
+        -moz-transition: background 0.25s ease-in-out 0;
+        -o-transition: background 0.25s ease-in-out 0;
+        transition: background 0.25s ease-in-out 0;
+    }
+
+.amb-register-form  button.btn-paypal { border:none; background: none; margin-top: 20px; cursor: pointer; }
+.amb-register-form .help-paypal-text {  display:block; clear:both; margin-top: 20px; font-size: 11px;}
+
+#section_buyer_signup .form-section { background-color: #fefefe; margin-bottom: 10px; padding: 10px 15px; border: 1px solid #eee;}
+#section_buyer_signup .form-section fieldset legend { padding-bottom:4px; background-color: transparent; color: #08c; font-size: 20px; text-rendering: optimizelegibility;}
+#section_buyer_signup .btn-facebook {
+    padding: 8px 60px;
+    color: #fff;
+    -webkit-box-shadow: inset 0 1px 1px #8ba3cd;
+    box-shadow: inset 0 1px 1px #8ba3cd;
+    -webkit-font-smoothing: antialiased;
+    background-image: -webkit-gradient(linear,left 0,left 100%,from(#6480b7),to(#445d92));
+    background-image: -webkit-linear-gradient(top,#6480b7,0%,#445d92,100%);
+    background-image: -moz-linear-gradient(top,#6480b7 0,#445d92 100%);
+    background-image: linear-gradient(to bottom,#6480b7 0,#445d92 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6480b7',endColorstr='#ff445d92',GradientType=0);
+    background-color: #445d92;
+    background:#445d92 url(https://dl.dropboxusercontent.com/u/51933131/FB-f-Logo__white_29.png) 20px 8px no-repeat;
+    font-size: 20px;
+}
+
+.amb-register-form .form-group .amb-controls .amb-input {
+    height: 38px;
+    font-size: 15px;
+}
+
+
+

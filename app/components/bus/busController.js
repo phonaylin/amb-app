@@ -1,55 +1,43 @@
-busModule.controller('busController', ['$scope','$routeParams','$log','busServices', function ($scope,$routeParams,$log,busServices) {
+busModule.controller('busController', ['$scope','$routeParams','$log','busServices','$location', function ($scope,$routeParams,$log,busServices,$location) {
 	$scope.bus = 'This is bus';
-	$scope.busRouteList = busServices.getBusRouteList();
+	$scope.busRouteList = function(){
+			busServices.getBusRouteList().then(function(response) { 
+			    $scope.busRouteList = response.data;
+			});
+	};
+	$scope.busRouteList();
 	$scope.$log= $scope.busRouteList;
+	var RouteCode = $routeParams.Route;
 
-	$scope.busRouteList = [
-	{
-		"RouteName": "Yangon",
-		"RouteList":[
-				{"RouteID":1,"RouteCode":"YGNMDY","fromCity":"Yangon","toCity":"Mandalay"},
-				{"RouteID":2,"RouteCode":"YGNBGN","fromCity":"Yangon","toCity":"Bagan"},
-				{"RouteID":3,"RouteCode":"YGNNPT","fromCity":"Yangon","toCity":"NayPyiTaw"},
-				{"RouteID":4,"RouteCode":"YGNTGY","fromCity":"Yangon","toCity":"Taunggyi"}
-			]
-	},
-	{
-		"RouteName": "Mandalay",
-		"RouteList":[
-				{"RouteID":1,"RouteCode":"MDYYGN","fromCity":"Mandalay","toCity":"Mandalay"},
-				{"RouteID":2,"RouteCode":"MDYBGN","fromCity":"Mandalay","toCity":"Bagan"},
-				{"RouteID":3,"RouteCode":"MDYNPT","fromCity":"Mandalay","toCity":"NayPyiTaw"},
-				{"RouteID":4,"RouteCode":"MDYBGN","fromCity":"Mandalay","toCity":"Taunggyi"}
-			]
-	},
-	{
-		"RouteName": "Bagan",
-		"RouteList":[
-				{"RouteID":5,"RouteCode":"BGNMDY","fromCity":"Bagan","toCity":"Mandalay"},
-				{"RouteID":6,"RouteCode":"BGNYGN","fromCity":"Bagan","toCity":"Yangon"},
-				{"RouteID":7,"RouteCode":"BGNNPT","fromCity":"Bagan","toCity":"NayPyiTaw"},
-				{"RouteID":8,"RouteCode":"BGNTGY","fromCity":"Bagan","toCity":"Taunggyi"}
-			]
-	},
-	{
-		"RouteName": "NayPyiTaw",
-		"RouteList":[
-				{"RouteID":9,"RouteCode":"NPTYGN","fromCity":"NayPyiTaw","toCity":"Mandalay"},
-				{"RouteID":10,"RouteCode":"NPTMDY","fromCity":"NayPyiTaw","toCity":"Yangon"},
-				{"RouteID":11,"RouteCode":"NPTBGN","fromCity":"NayPyiTaw","toCity":"NayPyiTaw"},
-				{"RouteID":12,"RouteCode":"NPTTGY","fromCity":"NayPyiTaw","toCity":"Taunggyi"}
-			]
-		
-	},
-	{
-		"RouteName": "Taunggyi",
-		"RouteList":[
-				{"RouteID":13,"RouteCode":"TGYYGN","fromCity":"Yangon","toCity":"Yangon"},
-				{"RouteID":14,"RouteCode":"TGYMDY","fromCity":"Yangon","toCity":"Mandalay"},
-				{"RouteID":15,"RouteCode":"TGYBGN","fromCity":"Yangon","toCity":"Bagan"},
-				{"RouteID":16,"RouteCode":"TGYNPT","fromCity":"Yangon","toCity":"NayPyiTaw"}
-			]
-	}
-	
-]
-}])
+$scope.busRouteDetail = function(){
+		if(RouteCode != ''){
+			$scope.bookingUrl = SITEURL+'/';
+			$scope.routeName = 'RouteCode';
+			busServices.getBusRouteDetail().then(function(response) { 
+			    $scope.busRouteDetail = response.data;
+			});
+		}
+};
+
+$scope.busRouteDetail();
+
+
+//$scope.quantity = 10;
+$scope.quantity = [0,1,2,3,4,5,6,7,8,9,10];
+
+
+ $scope.hasQuantity = function(index) {
+        var toy = $scope.quantity[index];
+        if (toy <= 0) {
+            return true;
+        }
+        return false;
+}
+
+
+$scope.processTicketForm = function() {
+	$location.path('/booking/register/14');
+};
+
+}]);
+

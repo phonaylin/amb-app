@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "amb-app",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "AMB BOOKING in angularjs",
+  "repository": "https://github.com/phonaylin/amb-app.git",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.7.7",

@@ -1,0 +1,80 @@
+{
+   "bus_route_id":"391",
+   "bus_id":"49",
+   "tax":"15.0000",
+   "currency_id":"4",
+   "fromCity":"Yangon",
+   "toCity":"Mandalay",
+   "departure_time":"08:00",
+   "arrival_time":"17:00",
+   "bus_number":"",
+   "bus_name":"Shwe Mandalar Express",
+   "company_name":"Oway Bus Company",
+   "bus_type_name":"Express Bus 2+2",
+   "bus_image":"data/bus/thumbnail/1434710535024.jpg",
+   "bus_path":"https://oway.com.mm/",
+   "bus_amenities":[
+      "Air-condition",
+      "Refreshment",
+      "Movie",
+      "Blanket"
+   ],
+   "bus_duration":"9hr 0min",
+   "bus_durationforsort":32400,
+   "rate_for_adult":7.91,
+   "rate_for_child":7.91,
+   "bus_route_rate_id":"357",
+   "unavailable_range" : "10-April-2016 to 22-April-2016",
+   "r":"5",
+   "currency":"$",
+   "ticket_list":[
+                  {  
+                     "RouteID":"111",
+                     "RouteCode":"YGNMDY",
+                     "fromCity":"Yangon",
+                     "toCity":"Mandalay",
+                     "departure_time":"9:00 AM",
+                     "way_type":"One Way",
+                     "bus_class":"First Class Bus",
+                     "routeDescription":"Express First Class Bus with large comfort seat (2+1 seating)",
+                     "routeDetail":"booking fees, payment fees and bus ticketing arrangement included",
+                     "price":"25.00"
+                  },
+                  {  
+                     "RouteID":"222",
+                     "RouteCode":"YGNMDY",
+                     "fromCity":"Yangon",
+                     "toCity":"Mandalay",
+                     "departure_time":"9:00 AM",
+                     "way_type":"One Way",
+                     "bus_class":"Normal Bus",
+                     "routeDescription":"Express Bus: 2+2 seating ",
+                     "routeDetail":"booking fees, payment fees and bus ticketing arrangement included",
+                     "price":"25.00"
+                  },
+                  {  
+                     "RouteID":"333",
+                     "RouteCode":"YGNMDY",
+                     "fromCity":"Yangon",
+                     "toCity":"Mandalay",
+                     "departure_time":"9:00 AM",
+                     "way_type":"One Way",
+                     "bus_class":"First Class Bus",
+                     "routeDescription":"Express Bus: 2+2 seating",
+                     "routeDetail":"booking fees, payment fees and bus ticketing arrangement included",
+                     "price":"25.00"
+                  },
+                  {  
+                     "RouteID":"444",
+                     "RouteCode":"YGNMDY",
+                     "fromCity":"Yangon",
+                     "toCity":"Mandalay",
+                     "departure_time":"9:00 AM",
+                     "way_type":"One Way",
+                     "bus_class":"First Class Bus",
+                     "routeDescription":"Express First Class Bus with large comfort seat (2+1 seating)",
+                     "routeDetail":"booking fees, payment fees and bus ticketing arrangement included",
+                     "price":"25.00"
+                  }
+                ]
+}
