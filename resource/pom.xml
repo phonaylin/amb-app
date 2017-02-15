@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.test</groupId>
-	<artifactId>double-resource</artifactId>
+	<artifactId>amb-resource</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>double-resource</name>
+	<name>amb-resource</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -122,7 +122,17 @@
             <version>1.4.3</version>
         </dependency>
 
-        <!-- velocity -->
+		<!-- <dependency>
+		  <groupId>org.freemarker</groupId>
+		  <artifactId>freemarker</artifactId>
+		  <version>2.3.25-incubating</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+        
+        <!-- velocity 
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
@@ -131,6 +141,7 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-tools</artifactId>
             </dependency>
+		-->
 
         <!-- https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-mail -->
         <dependency>

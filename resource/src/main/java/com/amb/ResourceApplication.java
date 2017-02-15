@@ -1,5 +1,6 @@
 package com.amb;
 
+import java.io.File;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,10 +21,12 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 @SpringBootApplication
 @RestController
@@ -96,6 +99,23 @@ public class ResourceApplication extends WebSecurityConfigurerAdapter {
 //			// @formatter:on
 //		}
 //	}
+	
+    /*
+     * FreeMarker configuration.
+     */
+//    @Bean
+//    public FreeMarkerConfigurationFactoryBean getFreeMarkerConfiguration() {
+//        FreeMarkerConfigurationFactoryBean bean = new FreeMarkerConfigurationFactoryBean();
+//        bean.setTemplateLoaderPath(new File("/templates/"));
+//        return bean;
+//    }
+    
+//    @Bean 
+//    public FreeMarkerConfigurer freemarkerConfig() { 
+//        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer(); 
+//        freeMarkerConfigurer.setTemplateLoaderPath("/templates/");
+//        return freeMarkerConfigurer; 
+//    }
 }
 
 class Message {
