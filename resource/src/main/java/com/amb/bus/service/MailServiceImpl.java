@@ -10,14 +10,16 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import com.amb.bus.BusOrder;
 
 import freemarker.template.Configuration;
 
-@Component("mailingService")
+@Service("mailingService")
 public class MailServiceImpl implements MailService{
 
 	@Autowired
@@ -26,6 +28,7 @@ public class MailServiceImpl implements MailService{
 	@Autowired
     Configuration freemarkerConfiguration;
  
+	@Async
     @Override
     public void sendEmail(Object object) {
  
@@ -51,7 +54,7 @@ public class MailServiceImpl implements MailService{
             public void prepare(MimeMessage mimeMessage) throws Exception {
                 MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
   
-                helper.setSubject("Your bus booking ");
+                helper.setSubject("Bus Booking Confirmation #"+ order.getBookingRefId());
                 helper.setFrom("phonaylin@gmail.com");
                 helper.setTo(order.getBuyerEmailAddress());
       
@@ -79,7 +82,7 @@ public class MailServiceImpl implements MailService{
         	
         	
          content.append(FreeMarkerTemplateUtils.processTemplateIntoString( 
-                 freemarkerConfiguration.getTemplate("fm_ggTemplate.ftl"),model));
+                 freemarkerConfiguration.getTemplate("fm_busConfirmTemplate.html"),model));
          return content.toString();
         }catch(Exception e){
             System.out.println("Exception occured while processing fmtemplate:"+e.getMessage());
