@@ -227,7 +227,17 @@ insert into bus_amenities (bus_id, bus_amenities, bus_amenities_order) values (2
 insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(1, 1, 2, 1, CURRENT_TIME, CURRENT_TIME, 1, CURRENT_TIME, null, 'USD 100', 1);
 insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(2, 1, 2, 1, CURRENT_TIME, CURRENT_TIME, 2, CURRENT_TIME, null, 'USD 200', 1);
 insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(3, 1, 3, 1, CURRENT_TIME, CURRENT_TIME, 1, CURRENT_TIME, null, 'USD 200', 1);
-insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(4, 2, 1, 1, CURRENT_TIME, CURRENT_TIME, 1, CURRENT_TIME, null, 'USD 200', 1);
+insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(4, 1, 4, 1, CURRENT_TIME, CURRENT_TIME, 1, CURRENT_TIME, null, 'USD 200', 1);
+
+insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(5, 2, 1, 1, CURRENT_TIME, CURRENT_TIME, 1, CURRENT_TIME, null, 'USD 100', 1);
+insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(6, 2, 1, 1, CURRENT_TIME, CURRENT_TIME, 2, CURRENT_TIME, null, 'USD 200', 1);
+insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(7, 2, 3, 1, CURRENT_TIME, CURRENT_TIME, 1, CURRENT_TIME, null, 'USD 200', 1);
+insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(8, 2, 4, 1, CURRENT_TIME, CURRENT_TIME, 1, CURRENT_TIME, null, 'USD 200', 1);
+
+insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(9, 3, 1, 1, CURRENT_TIME, CURRENT_TIME, 1, CURRENT_TIME, null, 'USD 100', 1);
+insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(10, 3, 1, 1, CURRENT_TIME, CURRENT_TIME, 2, CURRENT_TIME, null, 'USD 200', 1);
+insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(11, 3, 2, 1, CURRENT_TIME, CURRENT_TIME, 1, CURRENT_TIME, null, 'USD 200', 1);
+insert into bus_route(id, originpoi_id, destpoi_id, day_of_week, departure_time, arrival_time, bus_id, active_start_date, active_end_date, fare, version) values(12, 3, 4, 1, CURRENT_TIME, CURRENT_TIME, 1, CURRENT_TIME, null, 'USD 200', 1);
 
 
 --insert into bus_order(id, bus_route_id, customer_id, comment, total_price, order_status) values(1, 1, 1, 'Whatever man', 'USD100', 0);
