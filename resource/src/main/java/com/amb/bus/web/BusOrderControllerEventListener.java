@@ -15,11 +15,13 @@
  */
 package com.amb.bus.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.core.event.AbstractRepositoryEventListener;
 import org.springframework.stereotype.Component;
 
 import com.amb.Utility;
 import com.amb.bus.BusOrder;
+import com.amb.bus.service.MailService;
 import com.amb.core.Customer;
 
 /**
@@ -30,6 +32,9 @@ import com.amb.core.Customer;
 @Component
 class BusOrderControllerEventListener extends AbstractRepositoryEventListener<BusOrder> {
 
+	@Autowired
+	MailService mailService;
+	
 	/* 
 	 * (non-Javadoc)
 	 * @see org.springframework.data.rest.repository.context.AbstractRepositoryEventListener#onBeforeDelete(java.lang.Object)
@@ -38,5 +43,19 @@ class BusOrderControllerEventListener extends AbstractRepositoryEventListener<Bu
 	protected void onBeforeCreate(BusOrder order) {
 		order.setBookingRefId(Utility.generateBookingRefNumber(6).toString());
 		order.setTotalPrice(order.getBusRoute().getFare().multiply(order.getOrderItems().size()));
+		
+		// create customer
+		String firstName = order.getOrderItems().get(0).getPassengerFirstName();
+		String lastName = order.getOrderItems().get(0).getPassengerLastName();
+		String email = order.getBuyerEmailAddress();
+		String contact = order.getBuyerMobileNumber();
+		
+		Customer customer = new Customer(firstName, lastName, email, contact);
+		order.setCustomer(customer);
+	}
+	
+	@Override
+	protected void onAfterCreate(BusOrder order) {
+		mailService.sendEmail(order);
 	}
 }

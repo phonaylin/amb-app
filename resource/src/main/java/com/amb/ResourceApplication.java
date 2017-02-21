@@ -1,5 +1,6 @@
 package com.amb;
 
+import java.io.File;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,20 +14,31 @@ import org.springframework.boot.actuate.trace.WebRequestTraceFilter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 @SpringBootApplication
 @RestController
+@EnableAsync
 public class ResourceApplication extends WebSecurityConfigurerAdapter {
 
 	private String message = "Hello World";
@@ -96,6 +108,23 @@ public class ResourceApplication extends WebSecurityConfigurerAdapter {
 //			// @formatter:on
 //		}
 //	}
+	
+    /*
+     * FreeMarker configuration.
+     */
+//    @Bean
+//    public FreeMarkerConfigurationFactoryBean getFreeMarkerConfiguration() {
+//        FreeMarkerConfigurationFactoryBean bean = new FreeMarkerConfigurationFactoryBean();
+//        bean.setTemplateLoaderPath(new File("/templates/"));
+//        return bean;
+//    }
+    
+//    @Bean 
+//    public FreeMarkerConfigurer freemarkerConfig() { 
+//        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer(); 
+//        freeMarkerConfigurer.setTemplateLoaderPath("/templates/");
+//        return freeMarkerConfigurer; 
+//    }
 }
 
 class Message {

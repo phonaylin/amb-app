@@ -23,10 +23,12 @@ import com.amb.core.Route;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "busorders", path = "busorders")
+@CrossOrigin(origins = "*", maxAge = 3600)
 //@RepositoryRestResource(excerptProjection = BusRouteProjection.class)
 interface BusOrderRepository extends CrudRepository<BusOrder, Long> {
 
