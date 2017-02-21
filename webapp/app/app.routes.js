@@ -33,7 +33,7 @@ function config ($routeProvider,$httpProvider) {
 	})
 	.when('/booking/bus-ticket/:param',{
 		templateUrl :'components/bus/busTicketDetailView.html',
-		controller: 'busController'
+		controller: 'bookTicketsController'
 	})
 	.when('/booking/register/:param',{
 		templateUrl :'components/bus/busTicketPayment.html',

@@ -1,138 +1,33 @@
-<!--     <div id="homepage_banner" class="row">
-      <div class="container">
-          <h4 class="text-center bus-title">Bus Ticket to Popular Destinations in Myanmar</h4>
-            <ul class="list-unstyled text-center text-theme-lg">
-              <li class="btn btn-ghost btn-orange active" data-destination=".yangon">Yangon</li>
-              <li class="btn btn-ghost btn-orange" data-destination=".mandalay">Mandalay</li>
-              <li class="btn btn-ghost btn-orange" data-destination=".bagan">Bagan</li>
-              <li class="btn btn-ghost btn-orange" data-destination=".naypyitaw">NayPyiTaw</li>
-              <li class="btn btn-ghost btn-orange" data-destination=".taunggyi">Taunggyi</li>
-            </ul>
-            <div class="yangon route row row-bus" data-route="yangon">
-                  <div class="col-xs-7 col-sm-9 ticket-border">Yangon to Mandalay</div>
-                  <div class="col-xs-3 col-sm-2"><a href="#" class="btn btn-success btn-sm">Book Ticket</a></div>
-            </div>
-            <div data-route="mandalay" class="mandalay">
-            </div>
-            <div data-route="bagan" class="bagan">
-            </div>
-            <div data-route="naypyitaw" class="naypyitaw">
-            </div>
-            <div data-route="taunggyi" class="taunggyi">
-            </div>
-        </div>
-    </div>
- -->
-
-
     <div class="masthead masthead-home">
         <div class="container">
+            <div class="col-md-6 ">
+                <div style="margin-top:40px" class="text-left">
+                <h1 style="font-size:30px">
+                Fast, Easy &amp; Hassle Free Travel Booking Arrangement in Myanmar!
+                <br><small style="color:#eee">Save Your Half day from losing  <br>We make it easier and hassle-free for you.</small><br/><small style="color:#eee">No Headache, easy booking</small>
+                </h1>
+                </div>
+            </div>
             <div class="col-md-6">
-                <div style="background: #fff; padding: 20px 20px; margin-top: 20px; box-shadow: 1px 1px 2px #ccc;">
-                    <h1 style="margin-top: 0px; padding:10px; font-size:20px; color: #0ac; font-weight: bold; border-bottom: 1px solid #eee;">Bus Tickets to Popular Destinations in Myanmar</h1>
+                <div style="background: #fff; padding: 20px 20px; margin-top: 20px; box-shadow: 1px 1px 2px #ccc;border-radius:10px">
+                    <h1 style="margin-top: 0px; padding:10px; font-size:20px; color: #0ac; font-weight: bold; border-bottom: 1px solid #eee; text-align: center;border-radius:20px">Buy Ticket Online! Here's our route list</h1>
                     
 <div role="tabpanel" ng-controller="busController as busCtrl">
     <!-- Nav tabs -->
     <uib-tabset active="active">
-        <uib-tab index="$index + 1" ng-repeat="tab in busRouteList" heading="{{tab.RouteName}}" disable="tab.disabled">
-            <div class="row row-bus" ng-repeat="route in tab.RouteList">
+        <uib-tab index="$index + 1" ng-repeat="Route in busRouteByCity" heading="{{Route.RouteName}}" >
+            <div class="row row-bus" ng-repeat="list in Route.RouteList" >
                     <div class="col-xs-7 col-sm-9">
-                        <h5>{{route.fromCity}} &rarr; {{route.toCity}}</h5>
+                        <h5>{{list.originPOI.title}} &rarr; {{list.destPOI.title}} </h5>
                     </div>
                     <div class="col-xs-3 col-sm-2">
-                        <a href="#booking/bus-ticket/{{route.fromCity}}-{{route.toCity}}" class="btn btn-success btn-sm">Book Ticket</a>
+                        <a ng-href='#/booking/bus-ticket/{{list.originPOI.title}}-{{list.destPOI.title}}' class="btn btn-success btn-sm" role="button">Book Ticket</a>
                     </div>
             </div>
         </uib-tab>
     </uib-tabset>
 </div>
-
-
-<form id="form_bus_booking" class="form-inline" action="https://scapetour.com/booking/register/12127" method="post" style="display:none">
-    <div class="form-group">
-        <label class="sr-only" for="ticket">Bus Route</label>
-        <select class="form-control input-lg" style="width: 280px" name="ticket" id="ticket">
-            <option>Select Destination</option>
-            <option value="10960" data-siteid="12127">Yangon -&gt; Mandalay</option>
-            <option value="10961" data-siteid="12127">Mandalay -&gt; Yangon</option>
-        </select>
-        
-    </div>
-    <div class="form-group">
-        <label class="sr-only" for="quantity">No. of Tickets</label>
-        <select class="form-control input-lg" id="quantity">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-        </select>
-    </div>
-    <button type="submit" class="btn btn-success btn-lg" style="width:120px">Book Now</button>
-    <button type="submit" class="btn btn-success btn-lg" style="width:120px">View Price</button>
-    
-    <div class="clearfix" style="margin-top: 10px">
-        <div class="form-group">
-            <div class="checkbox">
-                <label style="font-size: 13px">
-                    <input type="checkbox" id="chk_special_bus"> VIP Bus with Special Comfort Seat (additional $10 per ticket)
-                </label>
-            </div>
-        </div>
-    </div>
-    
-</form>
-
-<script>
-    $(function () {
-        var c = [
-            { code: 'YGNMDY', type: "normal", eventid: 12127, ticketid: 10960 },
-            { code: 'YGNMDY', type: "vip",    eventid: 12127, ticketid: 10960 },
-            { code: 'MDYYGN', type: "normal", eventid: 12127, ticketid: 10960 },
-            { code: 'MDYYGN', type: "vip",    eventid: 12127, ticketid: 10960 },
-            { code: 'YGNBAG', type: "normal", eventid: 12127, ticketid: 10960 },
-            { code: 'YGNBAG', type: "vip",    eventid: 12127, ticketid: 10960 },
-            { code: 'BAGYGN', type: "normal", eventid: 12127, ticketid: 10960 },
-            { code: 'BAGYGN', type: "vip",    eventid: 12127, ticketid: 10960 },
-            { code: 'YGNTGY', type: "normal", eventid: 12127, ticketid: 10960 },
-            { code: 'YGNTGY', type: "vip",    eventid: 12127, ticketid: 10960 },
-            { code: 'TGYYGN', type: "normal", eventid: 12127, ticketid: 10960 },
-            { code: 'TGYYGN', type: "vip",    eventid: 12127, ticketid: 10960 }
-        ];
-
-        $("#form_bus_booking").submit(function () {
-            var ticket = $("#ticket").val();
-            var ticketId = parseInt(ticket);
-            var chk_special_bus = document.getElementById("chk_special_bus");
-            if (chk_special_bus.checked) {
-                var specialTicketId = ticketId + 2;
-                $("#quantity").attr("name", "quantity_" + specialTicketId);
-            }
-            else {
-                $("#quantity").attr("name", "quantity_" + ticket);
-            }
-
-            var chk_bus_terminal = document.getElementById("chk_bus_terminal");
-            if (chk_bus_terminal.checked) {
-                $("#chk_bus_terminal").val($("#quantity").val());
-            }
-        });
-    });
-</script>
           </div>
-            </div>
-            <div class="col-md-6">
-                <div class="hero" style="margin-top:40px">
-                    <h1 style="font-size:30px">
-                        Fast, Easy &amp; Hassle Free Travel Booking Arrangement in Myanmar!
-                        <br><small style="color:#eee">Save Your Half day from losing  <br>We make it easier and hassle-free for you.</small>
-                    </h1>
-                </div>
             </div>
         </div>
     </div>

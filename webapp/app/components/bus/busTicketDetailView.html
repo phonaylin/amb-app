@@ -9,6 +9,7 @@
                             
                                 <h3 class="item-tagline">Book with AMBTour for easy &amp; hassle-free arrangement!</h3>
                         </div>
+                        <a ng-click="back()" class="btn btn-info pull-right" href="javascript:">Back</a>
                     </div>
                 </div>
             </div>
@@ -47,8 +48,7 @@
                             <div class="title">Ticket Information</div>
                         </div>
                         <div id="ticket_widget_body" class="ticket-widget-body">
-                            <form id="form_ticket_widget" ng-submit="processTicketForm()" ng-controller="busController" method="post" target="_top">
-                                <input id="eventid" name="eventid" type="hidden" ng-model="fromCity" value="YGN">
+                            <form id="form_ticket_widget" ng-submit="processForm()" name="bookTickets" role="form">
                                 <input id="Referral" name="Referral" type="hidden" ng-model="Referral"  value="" >
                                 <input id="InvitationCodeCopy" name="InvitationCodeCopy" ng-model="InvitationCodeCopy" type="hidden" value="" >
                                 <input id="category" name="category" type="hidden" value="">

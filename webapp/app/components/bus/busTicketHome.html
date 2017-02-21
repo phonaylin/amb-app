@@ -7,14 +7,14 @@
             <div style="padding: 20px; min-height:200px; border: 1px solid #ddd; background: #eee;">
                 <div role="tabpanel">
                     <uib-tabset active="active">
-                        <uib-tab index="$index + 1" ng-repeat="tab in busRouteList" heading="{{tab.RouteName}}" disable="tab.disabled">
+                        <uib-tab index="$index + 1" ng-repeat="Route in busRouteByCity" heading="{{Route.RouteName}}">
                             <div class="tab-content" style="background: #fff">
-                                <div class="row row-bus" style="margin: 0px 10px; padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #ccc;" ng-repeat="route in tab.RouteList">
+                                <div class="row row-bus" style="margin: 0px 10px; padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #ccc;" ng-repeat="list in Route.RouteList" >
                                         <div class="col-xs-7 col-sm-9">
-                                            <h5>{{route.fromCity}} &rarr; {{route.toCity}}</h5>
+                                            <h5>{{list.originPOI.title}} &rarr; {{list.destPOI.title}} </h5>
                                         </div>
                                         <div class="col-xs-3 col-sm-2">
-                                            <a href="#booking/bus-ticket/{{route.fromCity}}-{{route.toCity}}" class="btn btn-success btn-sm">Book Ticket</a>
+                                            <a href="#" class="btn btn-success btn-sm">Book Ticket</a>
                                         </div>
                                 </div>
                             </div>
