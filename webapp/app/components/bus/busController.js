@@ -1,9 +1,9 @@
-busModule.controller('busController', ['$scope','$routeParams','$log','busServices','$location', function ($scope,$routeParams,$log,busServices,$location) {
+busModule.controller('busController',function ($scope,$routeParams,$log,busServices,$location) {
     
     $scope.back = function () {
         window.history.back();
     };
-
+    $scope.cityIdmapping = [];
 	$scope.bus = 'This is bus';
 	$scope.busRouteByCity = [];
 	$scope.busRouteList = function(){
@@ -20,23 +20,19 @@ busModule.controller('busController', ['$scope','$routeParams','$log','busServic
 					}else{
 						$scope.busRouteByCity[num].RouteList.push($scope.busPOIList[i]);
 					}
-                    var link = $scope.busPOIList[i]._links.self.href;
-					var n  = link.split('/');
-                    var RouteId = n[n.length - 1];
-                    $scope.busRouteByCity[num].RouteList[i]['RouteID'] = RouteId;
+                    // var link = $scope.busPOIList[i]._links.self.href;
+					// var n  = link.split('/');
+                    // var RouteId = n[n.length - 1];
+                    // $scope.busRouteByCity[num].RouteList[i]['RouteID'] = RouteId;
 				}
-			});
+			});            
 	};
-	$scope.busRouteList();
-	var RouteCode = $routeParams.Route;
+    $scope.busRouteList();
+});
 
-
-    $scope.busRouteDetail = function (){
-          
-    };
+busModule.controller('busBookTicketController',function ($scope,$routeParams,$log,busServices,$location) {
 
 $scope.quantity = [0,1,2,3,4,5,6,7,8,9,10];
-
 
 $scope.hasQuantity = function(index) {
         var toy = $scope.quantity[index];
@@ -46,31 +42,65 @@ $scope.hasQuantity = function(index) {
         return false;
 }
 
-$scope.currRoute = null;
-
-$scope.getBusTicketByRoute = function (Route) {
-        var FromTo = Route.split('-');
-        $scope.currfromCity = Fromto[0]; 
-        $scope.currtoCity = Fromto[1];
-        $scope.currRoute  = Route;
+    $scope.currRoute = null;
+    $scope.currfromCity = "";
+    $scope.currtoCity = "";
+    $scope.currfromCityID = "";
+    $scope.currtoCityID = "";
+    // $scope.getBusTicketByRoute = function (Route) {
+    //         var FromTo = Route.split('-');
+    //         $scope.currfromCity = FromTo[0]; 
+    //         $scope.currtoCity = FromTo[1];
+    //         $scope.currRoute  = Route;
+    //         busServices.getPOIs().then(function(response) { 
+    //             var POIs = response.data._embedded.pOIs;
+    //             for(var i=0;i<POIs.length;i++){
+    //                 if(POIs[i].title == $scope.currfromCity){
+    //                     $scope.currfromCityID = POIs[i]._links.pOI.href;
+    //                 }
+    //                 if(POIs[i].title == $scope.currtoCity){
+    //                     $scope.currtoCityID = POIs[i]._links.pOI.href;
+    //                 }
+    //             }
+    //         });
+    // };
+    
+    $scope.busRouteDetail = function(data){
+        if(data){
+        var FromTo = data.split('-');
+            $scope.currfromCity = FromTo[0]; 
+            $scope.currtoCity = FromTo[1];
+            $scope.currRoute = data;
+            busServices.getPOIs().then(function(response) { 
+                var POIs = response.data._embedded.pOIs;
+                for(var i=0;i<POIs.length;i++){
+                    if(POIs[i].title == $scope.currfromCity){
+                        $scope.currfromCityID = POIs[i]._links.pOI.href;
+                    }
+                    if(POIs[i].title == $scope.currtoCity){
+                        $scope.currtoCityID = POIs[i]._links.pOI.href;
+                    }
+                }
+                if($scope.currfromCityID !='' && $scope.currtoCityID != ''){
+                    busServices.searchRouteFromTo({fromCity:$scope.currfromCityID,toCity:$scope.currtoCityID}).then(function(response){
+                            $scope.busRouteListbyCity = response.data._embedded.busroutes;
+                            $scope.busRouteListbyCity['fromCity'] = $scope.currfromCity;
+                            $scope.busRouteListbyCity['toCity'] = $scope.currtoCity;
+                    });
+                }
+            });
+        }
     };
 
-}]);
-
-
-
-busModule.controller("bookTicketsController", function ($scope, $http, $location, $routeParams) {
-    var RouteName = $routeParams.param;
-    $scope.getBusTicketByRoute(RouteName);
+    $scope.busRouteDetail($routeParams.param);
     $scope.formData = {};
     $scope.formData.route_name = $scope.currRoute;
     $scope.formData.date = "Today";
     $scope.formData.originPOI = $scope.currfromCity;
     $scope.formData.destinPOI = $scope.currtoCity;
 
-
+    //BOOK BUS TICKET
     $scope.processForm = function () {
-        console.log($scope.formData);
         $http({
             method: 'POST',
             url: '/book',
@@ -83,9 +113,8 @@ busModule.controller("bookTicketsController", function ($scope, $http, $location
                 $location.path("/bookings");
             });
     };
+
 });
-
-
 
 
 

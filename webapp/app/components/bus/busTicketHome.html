@@ -9,12 +9,12 @@
                     <uib-tabset active="active">
                         <uib-tab index="$index + 1" ng-repeat="Route in busRouteByCity" heading="{{Route.RouteName}}">
                             <div class="tab-content" style="background: #fff">
-                                <div class="row row-bus" style="margin: 0px 10px; padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #ccc;" ng-repeat="list in Route.RouteList" >
+                                <div class="row row-bus" style="margin: 0px 10px; padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #ccc;" ng-repeat="list in Route.RouteList track by list.originPOI.title" >
                                         <div class="col-xs-7 col-sm-9">
                                             <h5>{{list.originPOI.title}} &rarr; {{list.destPOI.title}} </h5>
                                         </div>
                                         <div class="col-xs-3 col-sm-2">
-                                            <a href="#" class="btn btn-success btn-sm">Book Ticket</a>
+                                            <a ng-href='#/booking/bus-ticket/{{list.originPOI.title}}-{{list.destPOI.title}}' class="btn btn-success btn-sm">Book Ticket</a>
                                         </div>
                                 </div>
                             </div>

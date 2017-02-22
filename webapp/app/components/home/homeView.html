@@ -16,7 +16,7 @@
     <!-- Nav tabs -->
     <uib-tabset active="active">
         <uib-tab index="$index + 1" ng-repeat="Route in busRouteByCity" heading="{{Route.RouteName}}" >
-            <div class="row row-bus" ng-repeat="list in Route.RouteList" >
+            <div class="row row-bus" ng-repeat="list in Route.RouteList track by list._links.self.href" >
                     <div class="col-xs-7 col-sm-9">
                         <h5>{{list.originPOI.title}} &rarr; {{list.destPOI.title}} </h5>
                     </div>
