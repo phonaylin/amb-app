@@ -405,6 +405,7 @@ section {
 
 .ticket-widget-wrapper .row-heading {
     background: #f7f7f7;
+    margin: 0 auto;
     font-weight: bold;
 }
 

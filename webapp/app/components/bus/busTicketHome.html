@@ -1,4 +1,4 @@
-<div class="container" ng-controller="busController">
+<div class="container" >
 <div class="content-wrapper">
             <div class="page-header">
                 <h1>Book Bus Tickets in Myanmar</h1>
@@ -9,7 +9,7 @@
                     <uib-tabset active="active">
                         <uib-tab index="$index + 1" ng-repeat="Route in busRouteByCity" heading="{{Route.RouteName}}">
                             <div class="tab-content" style="background: #fff">
-                                <div class="row row-bus" style="margin: 0px 10px; padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #ccc;" ng-repeat="list in Route.RouteList track by list.originPOI.title" >
+                                <div class="row row-bus" style="margin: 0px 10px; padding-top: 10px;padding-bottom: 10px;border-bottom: 1px solid #ccc;" ng-repeat="list in Route.RouteList track by list._links.self.href" >
                                         <div class="col-xs-7 col-sm-9">
                                             <h5>{{list.originPOI.title}} &rarr; {{list.destPOI.title}} </h5>
                                         </div>

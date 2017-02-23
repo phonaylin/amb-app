@@ -18,7 +18,7 @@ busModule.controller('busController',function ($scope,$routeParams,$log,busServi
 						$scope.busRouteByCity.push({RouteName:title,RouteList:[$scope.busPOIList[i]]});
 						tempTitle = title;
 					}else{
-						$scope.busRouteByCity[num].RouteList.push($scope.busPOIList[i]);
+					    $scope.busRouteByCity[num].RouteList.push($scope.busPOIList[i]);
 					}
                     // var link = $scope.busPOIList[i]._links.self.href;
 					// var n  = link.split('/');
@@ -98,23 +98,31 @@ $scope.hasQuantity = function(index) {
     $scope.formData.date = "Today";
     $scope.formData.originPOI = $scope.currfromCity;
     $scope.formData.destinPOI = $scope.currtoCity;
+    $scope.formData.routeIDList = [{RouteID:1,Qty:2},{RouteID:2,Qty:3}];
 
     //BOOK BUS TICKET
     $scope.processForm = function () {
-        $http({
-            method: 'POST',
-            url: '/book',
-            data: $.param($scope.formData), // pass in data as strings
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            } // set the headers so angular passing info as form data (not request payload)
-        })
-            .success(function (data) {
-                $location.path("/bookings");
-            });
+         $location.path("/booking/bus-ticket-payment-details/"+JSON.stringify($scope.formData));
+         console.log(JSON.stringify($scope.formData));
     };
 
 });
 
+busModule.controller('busTicketPaymentController',function ($scope,$routeParams,busServices,$location) {
+    console.log($routeParams.param);
+    $scope.busTicketDetail = [];
+    if($routeParams.param){
+        var ticket= JSON.parse($routeParams.param);
+        if(ticket.route_name){
+            $scope.busTicketDetail['RouteName'] = ticket.route_name;
+            $scope.busTicketDetail['fromCity'] = ticket.originPOI;
+            $scope.busTicketDetail['toCity'] = ticket.destinPOI;
+        }else{
+            $location.path("/not-found");
+        }
+    }else{
+            $location.path("/not-found");
+    }
+});
 
 

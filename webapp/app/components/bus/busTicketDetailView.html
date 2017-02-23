@@ -1,4 +1,4 @@
-<div id="amb_site_home" class="amb-site-wrapper" ng-controller="busBookTicketController">
+<div id="amb_site_home" class="amb-site-wrapper">
     <div class="container">
         <div id="amb_section_masthead" class="amb-masthead">
             <div class="amb-masthead-inner">
@@ -48,7 +48,7 @@
                             <div class="title">Ticket Information</div>
                         </div>
                         <div id="ticket_widget_body" class="ticket-widget-body">
-                            <form id="form_ticket_widget" ng-submit="processForm()" name="bookTickets" role="form">
+                            <form id="form_ticket_widget" ng-submit="processForm()" name="busbookTickets" role="form">
                                 <input id="Referral" name="Referral" type="hidden" ng-model="Referral"  value="" >
                                 <input id="InvitationCodeCopy" name="InvitationCodeCopy" ng-model="InvitationCodeCopy" type="hidden" value="" >
                                 <input id="category" name="category" type="hidden" value="">
@@ -79,6 +79,7 @@
                                 </div>
                                         <div ng-repeat="ticket in busRouteListbyCity" class='row row-ticket tr-{{ticket.RouteID}}' data-id='{{ticket.RouteID}}'>
                                             <div class="col-xs-9 col-sm-7 col-ticket td-type" id="{{ticket.RouteID}}" align="left">
+                                                <input type="hidden" ng-model="formData.routeIDList" value="{{ticket._links.self.href}}">
                                                 <div>
                                                     <div class="ticket-name">{{ticket.originPOI.title}} -&gt; {{ticket.destPOI.title}} - {{ticket.departureTime}} | ({{ticket.bus.busClass}})</div>
                                                     <div class="departure-time visible-xs">

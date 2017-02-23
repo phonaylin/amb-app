@@ -35,17 +35,21 @@ function config ($routeProvider,$httpProvider) {
 		templateUrl :'components/bus/busTicketDetailView.html',
 		controller: 'busBookTicketController'
 	})
-	.when('/booking/register/:param',{
+	.when('/booking/bus-ticket-payment-details/:param',{
 		templateUrl :'components/bus/busTicketPayment.html',
-		controller: 'busController'
+		controller: 'busTicketPaymentController'
 	})
 	.when('/bus-operators',{
 		templateUrl :'components/bus/busOperatorsView.html',
-		controller: 'busController'
+		controller: 'busOperatorsController'
 	})
 	.when('/bus-stations',{
 		templateUrl :'components/bus/busStationsView.html',
-		controller: 'busController'
+		controller: 'busStationsController'
+	})
+	.when('/not-found',{
+		templateUrl :'components/core/pageNotFound.html',
+		controller: 'busStationsController'
 	})
 	.otherwise({
 			redirectTo: '/'
