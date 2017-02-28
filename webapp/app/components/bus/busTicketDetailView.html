@@ -49,8 +49,8 @@
                         </div>
                         <div id="ticket_widget_body" class="ticket-widget-body">
                             <form id="form_ticket_widget" ng-submit="processForm()" name="busbookTickets" role="form">
-                                <input id="Referral" name="Referral" type="hidden" ng-model="Referral"  value="" >
-                                <input id="InvitationCodeCopy" name="InvitationCodeCopy" ng-model="InvitationCodeCopy" type="hidden" value="" >
+                                <input id="Referral" name="Referral" type="hidden" ng-model="formData.Referral"  value="" >
+                                <input id="InvitationCodeCopy" name="InvitationCodeCopy" ng-model="formData.InvitationCodeCopy" type="hidden" value="" >
                                 <input id="category" name="category" type="hidden" value="">
                                 <div class="row row-heading">
                                     <div class="col-xs-9 col-sm-7 col-ticket th-type">
@@ -97,16 +97,14 @@
                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-2 hidden-xs col-ticket td-departure" id="{{ticket.RouteID}}" align="left" nowrap="nowrap">
+                                            <div class="col-sm-2 hidden-xs col-ticket td-departure" align="left" nowrap="nowrap">
                                                 {{ticket.departureTime}}
                                             </div>
-                                                <div class="col-xs-3 col-sm-1 col-ticket td-price" id="{{ticket.RouteID}}" align="left" nowrap="nowrap">
+                                                <div class="col-xs-3 col-sm-1 col-ticket td-price" align="left" nowrap="nowrap">
                                                             <div><span class="visible-xs">Price:</span>{{ticket.fare}}</div>
                                                 </div>
-                                                <div class="col-xs-3 col-sm-2 col-ticket td-qty" id='{{ticket.RouteID}}' align="right" nowrap="nowrap">
-                    <select  ng-class="{ 'has-error' : errorQuantity }" id='quantity_{{ticket.RouteID}}' class="form-control input-quantity" ng-model="ticket_quantity" ng-init="ticket_quantity = 0" ng-options="x for x in quantity"> </select>
-                    <span class="help-block" ng-show="errorQuantity">{{ errorName }}</span>   
-
+                                                <div class="col-xs-3 col-sm-2 col-ticket td-qty" align="right" nowrap="nowrap">
+<select class="form-control input-quantity" ng-model="formData.order_quantity[ticket.RouteID]" ng-options="n for n in [] | range:0:ticket.Qty+1"> </select>
                                                 </div>
                                         </div>            
                                     <div class="">
@@ -115,7 +113,7 @@
                                                 <div id="field_wrapper_InvitationCode" style="background:#0fc">
                                                     <label for="InvitationCode">
                                                         Please enter an invitation code:
-                    <input class="form-control input-invitation " id="InvitationCode" maxlength="50" name="InvitationCode" placeholder="Invitation code" type="text" value="" >                                </label>
+                    <input class="form-control input-invitation " ng-model="formData.InvitationCode" maxlength="50" name="InvitationCode" placeholder="Invitation code" type="text" value="" >                                </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -126,7 +124,7 @@
                                         <div id="field_wrapper_DiscountCode" class="hide" style="background:#0fc">
                                             <label for="discountcode">
                                                 If you have a promotional code, enter it here:
-                    <input class="form-control input-discount" id="discountcode" maxlength="50" name="discount" placeholder="promotional code" type="text" value="" >                        </label>
+                    <input class="form-control input-discount" id="discountcode" ng-model="formData.discountcode" maxlength="50" name="discount" placeholder="promotional code" type="text" value="" >                        </label>
                                             <button id="btnDiscount" name="action" type="submit" value="apply_discount" class="btn btn-primary btn-sm btn-discount">
                                                 Apply
                                             </button>
@@ -136,10 +134,10 @@
                                 <div class="clearfix action-row">
                                     
                                     <div class="pull-right">
-                                            <button id="btnSubmit" name="action" type="submit" value="register" class="btn btn-success btn-register" >
+                                            <button id="btnSubmit" name="action" type="submit" value="register" class="btn btn-success btn-register" ng-disabled="formData.order_quantity.length < 0">
                                                 Book Ticket
                                             </button>
-
+                                            {{formData.order_quantity.length}}
                                     </div>
                                 </div>
                             </form>

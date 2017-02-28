@@ -18,8 +18,11 @@ busModule.service('busServices',['$http', function($http){
 				return $http.get(APIURL+"busroutes/search/findByOriginPOIAndDestPOI?origin="+data.fromCity+"&dest="+data.toCity+"&projection=summary");
 			// }
 		}
+
 	}
 }]);
+
+
 
 /*
 http://52.77.49.9:9000/busroutes
@@ -30,4 +33,7 @@ http://52.77.49.9:9000/busroutes/search/findByOriginPOI?origin=http://52.77.49.9
 
 http://52.77.49.9:9000/busroutes/search/findByOriginPOIAndDestPOI?origin=http://52.77.49.9:9000/pOIs/1&dest=http://52.77.49.9:9000/pOIs/2&projection=summary
 http://52.77.49.9:9000/busroutes/search
+
+http://52.77.49.9:9000/busroutes/2
+
 */
