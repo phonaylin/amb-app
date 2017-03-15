@@ -104,7 +104,7 @@
                                                             <div><span class="visible-xs">Price:</span>{{ticket.fare}}</div>
                                                 </div>
                                                 <div class="col-xs-3 col-sm-2 col-ticket td-qty" align="right" nowrap="nowrap">
-<select class="form-control input-quantity" ng-model="formData.order_quantity[ticket.RouteID]" ng-options="n for n in [] | range:0:ticket.Qty+1"> </select>
+<select class="form-control input-quantity" ng-model="formData.order_quantity[ticket.RouteID]" ng-options="n for n in [] | range:0:11"> </select>
                                                 </div>
                                         </div>            
                                     <div class="">
@@ -134,10 +134,9 @@
                                 <div class="clearfix action-row">
                                     
                                     <div class="pull-right">
-                                            <button id="btnSubmit" name="action" type="submit" value="register" class="btn btn-success btn-register" ng-disabled="formData.order_quantity.length < 0">
+                                            <button id="btnSubmit" name="action" type="submit" value="register" class="btn btn-success btn-register">
                                                 Book Ticket
                                             </button>
-                                            {{formData.order_quantity.length}}
                                     </div>
                                 </div>
                             </form>

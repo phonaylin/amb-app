@@ -59,7 +59,8 @@ ambApp.factory('Scopes', function ($rootScope) {
         }
     };
 });
-// ambApp.run(function ($rootScope,busService,$http,$location,$route) {
-
-
-// });
+ambApp.run(function($rootScope,busServices,$http,$location,$route) {
+   $rootScope.$on('scope.stored', function (event, data) {
+        console.log("scope.stored", data);
+    });
+});

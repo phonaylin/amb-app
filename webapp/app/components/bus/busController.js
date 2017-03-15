@@ -1,4 +1,4 @@
-busModule.controller('busController',function ($scope,$routeParams,$log,busServices,$location) {
+busModule.controller('busController',function ($scope,$routeParams,$log,busServices,$location,Scopes) {
     
     $scope.back = function () {
         window.history.back();
@@ -30,7 +30,7 @@ busModule.controller('busController',function ($scope,$routeParams,$log,busServi
     $scope.busRouteList();
 });
 
-busModule.controller('busBookTicketController',function ($scope,$routeParams,$log,busServices,$location) {
+busModule.controller('busBookTicketController',function ($scope,$routeParams,$log,busServices,$location,Scopes) {
 
 $scope.quantity = [0,1,2,3,4,5,6,7,8,9,10];
 
@@ -73,7 +73,7 @@ $scope.hasQuantity = function(index) {
                                 var n  = link.split('/');
                                 var RouteId = n[n.length - 1];
                                 $scope.busRouteListbyCity[i].RouteID = RouteId;
-                                $scope.busRouteListbyCity[i].Qty = 10;
+                                //$scope.busRouteListbyCity[i].Qty = 10;
                             }
                             $scope.busRouteListbyCity['fromCity'] = $scope.currfromCity;
                             $scope.busRouteListbyCity['toCity'] = $scope.currtoCity;
@@ -89,58 +89,51 @@ $scope.hasQuantity = function(index) {
     $scope.formData.date = "Today";
     $scope.formData.fromCity = $scope.currfromCity;     
     $scope.formData.toCity = $scope.currtoCity;
-    $scope.formData.route_data = [];
-    $scope.formData.order_quantity = {};
+    $scope.formData.order_quantity = [];
+    $scope.formData.tickets = [];
 
     //BOOK BUS TICKET
     $scope.processForm = function () {
           var checkQty = Object.keys($scope.formData.order_quantity);
             var arrayQty = [];
-            angular.forEach($scope.formData.order_quantity, function(value, key){
-                if(value > 0){
-                    arrayQty.push({RouteID:key,Qty:value});
-                }
-            });
+                angular.forEach($scope.busRouteListbyCity,function(value,key){
+                    angular.forEach($scope.formData.order_quantity, function(value1, key1){
+                    if(value1 > 0){
+                        if(key1 == value.RouteID){
+                            value.order_qty = value1;
+                            value.fare = value.fare.substring(3, value.fare.length);
+                            arrayQty.push(value);
+                        }
+                    }
+                    });
+                });
              $scope.formData.tickets = arrayQty;
              console.log($scope.formData.tickets);
-             console.log($scope.busRouteListbyCity);
              if($scope.formData.tickets.length <= 0){
                 $scope.messages = 'You haven\'t select any ticket yet';     
-             }else{
-                 delete $scope.formData.order_quantity; 
-                 angular.forEach($scope.busRouteListbyCity,function(value,key){
-                     angular.forEach($scope.formData.tickets,function(value1,key1){
-                         if(value1.RouteID == value.RouteID){
-                            // $scope.formData.route_data.push({RouteID:value.RouteID,
-                            //                                 order_qty:key1,
-                            //                                 fare:value.fare,
-                            //                                 originPOI:value.originPOI,
-                            //                                 bus:value.bus,
-                            //                                 departureTime:value.departureTime,
-                            //                                 _links:value._links
-                            //                                 });
-                         }
-                     });
-                 });
-                var formdata = JSON.stringify($scope.formData);
-                console.log(formdata);
-                $location.path("/booking/bus-ticket-payment-details/"+formdata);
+             }else{ 
+                Scopes.store('busBookTicketController', $scope.formData);
+                $location.path("/booking/bus-ticket-payment-details/");
              }
     };
 });
 
-busModule.controller('busTicketPaymentController',function ($scope,$routeParams,busServices,$location) {
+busModule.controller('busTicketPaymentController',function ($scope,$routeParams,busServices,$location,Scopes) {
     $scope.busTicketDetail ={};
-    if($routeParams.param){
-        var ticket= JSON.parse($routeParams.param);
-        if(ticket.route_name){
-            $scope.busTicketDetail = ticket;
-            console.log($scope.busTicketDetail);
-        }else{
-            $location.path("/not-found");
+    $scope.busTicketDetail = Scopes.get('busBookTicketController');
+    $scope.subTotal = 0;
+    $scope.grandTotal = 0;
+    if($scope.busTicketDetail){
+        $scope.calculate = function() {
+            angular.forEach($scope.busTicketDetail.tickets,function(value,key){
+                $scope.subTotal += (value.fare*value.order_qty);
+            })
+            $scope.grandTotal = $scope.subTotal;
         }
+        $scope.calculate();
+        console.log($scope.busTicketDetail);
     }else{
-            $location.path("/not-found");
+        $location.path("/not-found");
     }
 });
 
