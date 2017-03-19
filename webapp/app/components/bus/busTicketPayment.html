@@ -75,13 +75,13 @@
                                         <div class="ticket-name">{{ticket.originPOI.title}}-&gt; {{ticket.destPOI.title}} - {{ticket.departureTime}} | {{ticket.bus.busClass}}({{ticket.bus.busClassDescription}})</div>
                                     </td>
                                     <td class="td-price" nowrap="nowrap">
-                                        {{ticket.fare | currency:"USD"}}
+                                        {{ticket.fare | currency:"USD "}}
                                     </td>
                                     <td class="td-qty" nowrap="nowrap" style="text-align: center"> 
                                         {{ticket.order_qty}}
                                     </td>
                                     <td class="td-totalprice" align="right" nowrap="nowrap" style="text-align:right; padding-right: 10px">
-                                        {{(ticket.order_qty * ticket.fare) | currency:"USD"}}<br/>
+                                        {{(ticket.order_qty * ticket.fare) | currency:"USD "}}<br/>
                                     </td>
                                 </tr>
                                 
@@ -89,11 +89,11 @@
                             <tfoot>
                                 <tr class="tr-subtotal">
                                     <td colspan="3" class="lbl">Sub Total</td>
-                                    <td style="text-align: right" class="amt">{{subTotal | currency:"USD"}}</td>
+                                    <td style="text-align: right" class="amt">{{subTotal | currency:"USD "}}</td>
                                 </tr>
                                 <tr class="tr-grandtotal">
                                     <td colspan="3" class="lbl grandtotal">Grand Total (USD)</td>
-                                    <td style="text-align: right" class="amt grandtotal">{{grandTotal | currency:"USD"}}</td>
+                                    <td style="text-align: right" class="amt grandtotal">{{grandTotal | currency:"USD "}}</td>
                                 </tr>
                             </tfoot>
                             </table>
@@ -102,321 +102,188 @@
                     </div>
 
                     <div id="section_register_details_form" class="section amb-register-form">
-
+                        
                     <form ng-submit="registerBooking()"  class="form-horizontal" id="form_register_details" method="post" novalidate="novalidate">
-                        <input id="order_EventId" name="order.EventId" type="hidden" value="14">
-                        <input id="order_OrderGuid" name="order.OrderGuid" type="hidden" value="07ab66e0-7f72-464a-a8ee-2f90c5800b14">            
-                        <input type="hidden" name="s_single_form" value="1">
                         <div class="attendee-form-instruction"><h3>Please complete your booking details.</h3></div>
-                            <a name="fs_form_ticket_1"><!--bookmark--></a>
+                        <div ng-if="busTicketDetail.totalTickets == 1" >
                             <div id="ticket_form_wrapper_250424_234_0" class="form-section">
                                 <fieldset>
-                                <legend><span class="ticket-title-index">Ticket #1</span> <span class="ticket-title-name">Yangon -&gt; Mandalay - 9:00 am | One Way (First Class Bus)</span></legend>
+                                <legend><span class="ticket-title-index">Ticket #1</span> <span class="ticket-title-name">{{ticket.originPOI.title}}-&gt; {{ticket.destPOI.title}} - {{ticket.departureTime}} | {{ticket.bus.busClass}}({{ticket.bus.busClassDescription}})</span></legend>
+                                <div id="field_wrapper_Ticket0__-" class="form-group form-group-subheader">
+                                    <div class="subheader">
+                                        <h5>
+                                            Departure Date
+                                        </h5>
+                                    </div>
+                                </div>
                                 <input id="Ticket_0__TicketId" name="Ticket[0].TicketId" type="hidden" value="234">
-                                
-                    <div id="field_wrapper_Ticket0__-" class="form-group form-group-subheader">
-                        <div class="subheader">
-                            <h5>
-                                Departure Date
-                            </h5>
-                        </div>
-                    </div>
-                    <div id="field_wrapper_Ticket0__CustomField5" class="form-group">
-                        <label for="Ticket0__CustomField5" class="col-md-4 control-label">Travel Date (dd-mm-yyyy) (E.g., 23-02-2014):<span class="required">*</span></label>
-                        <div class="col-md-8 amb-controls">
-                            <input class="required form-control amb-input  hasDatepicker" moment-picker="ticketDate" ng-model="ticketDate" format="DD/MM/YYYY">
-                                <span class="help-block">min. 24 hours in advance required for booking arrangement prior to travel date.</span>
-                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField5" data-valmsg-replace="true"></span>
-                        </div>
-                    </div>
-                    <div id="field_wrapper_Ticket0__-" class="form-group form-group-subheader">
-                        <div class="subheader">
-                            <h5>
-                                Passenger Details
-                            </h5>
-                        </div>
-                    </div>
-                    <div id="field_wrapper_Ticket0__FirstName" class="form-group">
-                        <label for="Ticket0__FirstName" class="col-md-4 control-label">First Name:<span class="required">*</span></label>
-                        <div class="col-md-8 amb-controls">
-                            <input class="required form-control amb-input " data-fieldid="Ticket0__FirstName" id="Ticket0__FirstName" maxlength="100" name="Ticket[0].FirstName" style="font-family: Zawgyi-One;" type="text" value="">
-                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].FirstName" data-valmsg-replace="true"></span>
-                        </div>
-                    </div>
-                    <div id="field_wrapper_Ticket0__LastName" class="form-group">
-                        <label for="Ticket0__LastName" class="col-md-4 control-label">Last Name:<span class="required">*</span></label>
-                        <div class="col-md-8 amb-controls">
-                            <input class="required form-control amb-input " data-fieldid="Ticket0__LastName" id="Ticket0__LastName" maxlength="100" name="Ticket[0].LastName" style="font-family: Zawgyi-One;" type="text" value="">
-                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].LastName" data-valmsg-replace="true"></span>
-                        </div>
-                    </div>
-                    <div id="field_wrapper_Ticket0__Email" class="form-group">
-                        <label for="Ticket0__Email" class="col-md-4 control-label">Email:<span class="required">*</span></label>
-                        <div class="col-md-8 amb-controls">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                <input type="email" name="Ticket[0].Email" id="Ticket0__Email" data-fieldid="Ticket0__Email" class="required form-control amb-input email " style="font-family: Zawgyi-One;" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                    <div id="field_wrapper_Ticket0__CustomField5" class="form-group">
+                                        <label for="Ticket0__CustomField5" class="col-md-4 control-label">Travel Date (dd-mm-yyyy) (E.g., 03-03-2017):<span class="required">*</span></label>
+                                        <div class="col-md-8 evnk-controls">
+                                            <input class="required form-control evnk-input  hasDatepicker" data-fieldid="Ticket0__CustomField5" id="Ticket0__CustomField5" maxlength="10" name="Ticket[0].CustomField5" style="font-family: Zawgyi-One;" type="text" value="">
+                                                <span class="help-block">min. 24 hours in advance required for booking arrangement prior to travel date.</span>
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField5" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__-" class="form-group form-group-subheader">
+                                        <div class="subheader">
+                                            <h5>
+                                                Passenger Details
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__FirstName" class="form-group">
+                                        <label for="Ticket0__FirstName" class="col-md-4 control-label">First Name:<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <input class="required form-control amb-input " data-fieldid="Ticket0__FirstName" id="Ticket0__FirstName" maxlength="100" name="Ticket[0].FirstName" style="font-family: Zawgyi-One;" type="text" value="">
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].FirstName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__LastName" class="form-group">
+                                        <label for="Ticket0__LastName" class="col-md-4 control-label">Last Name:<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <input class="required form-control amb-input " data-fieldid="Ticket0__LastName" id="Ticket0__LastName" maxlength="100" name="Ticket[0].LastName" style="font-family: Zawgyi-One;" type="text" value="">
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].LastName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__Email" class="form-group">
+                                        <label for="Ticket0__Email" class="col-md-4 control-label">Email:<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                                <input type="email" name="Ticket[0].Email" id="Ticket0__Email" data-fieldid="Ticket0__Email" class="required form-control amb-input email " style="font-family: Zawgyi-One;" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                            </div>
+                                            <span class="help-block"><span class="label label-info">Note:</span> The confirmation email will be sent to this email.</span>
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].Email" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__CustomField1" class="form-group">
+                                        <label for="Ticket0__CustomField1" class="col-md-4 control-label">Contact Number:<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <input class="required form-control amb-input " data-fieldid="Ticket0__CustomField1" id="Ticket0__CustomField1" maxlength="40" name="Ticket[0].CustomField1" style="font-family: Zawgyi-One;" type="text" value="">
+                                                <span class="help-block">country code + number (E.g., (+65) 6682-6572</span>
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField1" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__CustomField2" class="form-group">
+                                        <label for="Ticket0__CustomField2" class="col-md-4 control-label">Nationality:<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <select class="required form-control amb-input " data-fieldid="Ticket0__CustomField2" id="Ticket0__CustomField2" name="Ticket[0].CustomField2">
+                                            <option value=""></option>
+                                            <option value="MM">Myanmar</option>
+                                            </select>
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField2" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </div>
-                            <span class="help-block"><span class="label label-info">Note:</span> The confirmation email will be sent to this email.</span>
-                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].Email" data-valmsg-replace="true"></span>
                         </div>
-                    </div>
-                    <div id="field_wrapper_Ticket0__CustomField1" class="form-group">
-                        <label for="Ticket0__CustomField1" class="col-md-4 control-label">Contact Number:<span class="required">*</span></label>
-                        <div class="col-md-8 amb-controls">
-                            <input class="required form-control amb-input " data-fieldid="Ticket0__CustomField1" id="Ticket0__CustomField1" maxlength="40" name="Ticket[0].CustomField1" style="font-family: Zawgyi-One;" type="text" value="">
-                                <span class="help-block">country code + number (E.g., (+65) 6682-6572</span>
-                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField1" data-valmsg-replace="true"></span>
-                        </div>
-                    </div>
-                    <div id="field_wrapper_Ticket0__CustomField2" class="form-group">
-                        <label for="Ticket0__CustomField2" class="col-md-4 control-label">Nationality:<span class="required">*</span></label>
-                        <div class="col-md-8 amb-controls">
-                            <select class="required form-control amb-input " data-fieldid="Ticket0__CustomField2" id="Ticket0__CustomField2" name="Ticket[0].CustomField2" style="font-family: Zawgyi-One;"><option value=""></option>
-                    <option value="AF">Afghanistan</option>
-                    <option value="AL">Albania</option>
-                    <option value="DZ">Algeria</option>
-                    <option value="AS">American Samoa</option>
-                    <option value="AD">Andorra</option>
-                    <option value="AO">Angola</option>
-                    <option value="AI">Anguilla</option>
-                    <option value="AQ">Antarctica</option>
-                    <option value="AG">Antigua And Barbuda</option>
-                    <option value="AR">Argentina</option>
-                    <option value="AM">Armenia</option>
-                    <option value="AW">Aruba</option>
-                    <option value="AU">Australia</option>
-                    <option value="AT">Austria</option>
-                    <option value="AZ">Azerbaijan</option>
-                    <option value="BS">Bahamas</option>
-                    <option value="BH">Bahrain</option>
-                    <option value="BD">Bangladesh</option>
-                    <option value="BB">Barbados</option>
-                    <option value="BY">Belarus</option>
-                    <option value="BE">Belgium</option>
-                    <option value="BZ">Belize</option>
-                    <option value="BJ">Benin</option>
-                    <option value="BM">Bermuda</option>
-                    <option value="BT">Bhutan</option>
-                    <option value="BO">Bolivia</option>
-                    <option value="BA">Bosnia And Herzegowina</option>
-                    <option value="BW">Botswana</option>
-                    <option value="BV">Bouvet Island</option>
-                    <option value="BR">Brazil</option>
-                    <option value="IO">British Indian Ocean Territory</option>
-                    <option value="BN">Brunei Darussalam</option>
-                    <option value="BG">Bulgaria</option>
-                    <option value="BF">Burkina Faso</option>
-                    <option value="BI">Burundi</option>
-                    <option value="KH">Cambodia</option>
-                    <option value="CM">Cameroon</option>
-                    <option value="CA">Canada</option>
-                    <option value="CV">Cape Verde</option>
-                    <option value="KY">Cayman Islands</option>
-                    <option value="CF">Central African Republic</option>
-                    <option value="TD">Chad</option>
-                    <option value="CL">Chile</option>
-                    <option value="CN">China</option>
-                    <option value="CX">Christmas Island</option>
-                    <option value="CC">Cocos (Keeling) Islands</option>
-                    <option value="CO">Colombia</option>
-                    <option value="KM">Comoros</option>
-                    <option value="CG">Congo</option>
-                    <option value="CK">Cook Islands</option>
-                    <option value="CR">Costa Rica</option>
-                    <option value="CI">Cote D'ivoire</option>
-                    <option value="HR">Croatia (Local Name: Hrvatska)</option>
-                    <option value="CU">Cuba</option>
-                    <option value="CY">Cyprus</option>
-                    <option value="CZ">Czech Republic</option>
-                    <option value="DK">Denmark</option>
-                    <option value="DJ">Djibouti</option>
-                    <option value="DM">Dominica</option>
-                    <option value="DO">Dominican Republic</option>
-                    <option value="TP">East Timor</option>
-                    <option value="EC">Ecuador</option>
-                    <option value="EG">Egypt</option>
-                    <option value="SV">El Salvador</option>
-                    <option value="GQ">Equatorial Guinea</option>
-                    <option value="ER">Eritrea</option>
-                    <option value="EE">Estonia</option>
-                    <option value="ET">Ethiopia</option>
-                    <option value="FK">Falkland Islands (Malvinas)</option>
-                    <option value="FO">Faroe Islands</option>
-                    <option value="FJ">Fiji</option>
-                    <option value="FI">Finland</option>
-                    <option value="FR">France</option>
-                    <option value="FX">France, Metropolitan</option>
-                    <option value="GF">French Guiana</option>
-                    <option value="PF">French Polynesia</option>
-                    <option value="TF">French Southern Territories</option>
-                    <option value="GA">Gabon</option>
-                    <option value="GM">Gambia</option>
-                    <option value="GE">Georgia</option>
-                    <option value="DE">Germany</option>
-                    <option value="GH">Ghana</option>
-                    <option value="GI">Gibraltar</option>
-                    <option value="GR">Greece</option>
-                    <option value="GL">Greenland</option>
-                    <option value="GD">Grenada</option>
-                    <option value="GP">Guadeloupe</option>
-                    <option value="GU">Guam</option>
-                    <option value="GT">Guatemala</option>
-                    <option value="GN">Guinea</option>
-                    <option value="GW">Guinea-Bissau</option>
-                    <option value="GY">Guyana</option>
-                    <option value="HT">Haiti</option>
-                    <option value="HM">Heard And Mc Donald Islands</option>
-                    <option value="VA">Holy See (Vatican City State)</option>
-                    <option value="HN">Honduras</option>
-                    <option value="HK">Hong Kong</option>
-                    <option value="HU">Hungary</option>
-                    <option value="IS">Iceland</option>
-                    <option value="IN">India</option>
-                    <option value="ID">Indonesia</option>
-                    <option value="IR">Iran (Islamic Republic Of)</option>
-                    <option value="IQ">Iraq</option>
-                    <option value="IE">Ireland</option>
-                    <option value="IL">Israel</option>
-                    <option value="IT">Italy</option>
-                    <option value="JM">Jamaica</option>
-                    <option value="JP">Japan</option>
-                    <option value="JO">Jordan</option>
-                    <option value="KZ">Kazakhstan</option>
-                    <option value="KE">Kenya</option>
-                    <option value="KI">Kiribati</option>
-                    <option value="KW">Kuwait</option>
-                    <option value="KG">Kyrgyzstan</option>
-                    <option value="LA">Laos</option>
-                    <option value="LV">Latvia</option>
-                    <option value="LB">Lebanon</option>
-                    <option value="LS">Lesotho</option>
-                    <option value="LR">Liberia</option>
-                    <option value="LY">Libyan Arab Jamahiriya</option>
-                    <option value="LI">Liechtenstein</option>
-                    <option value="LT">Lithuania</option>
-                    <option value="LU">Luxembourg</option>
-                    <option value="MO">Macau</option>
-                    <option value="MK">Macedonia</option>
-                    <option value="MG">Madagascar</option>
-                    <option value="MW">Malawi</option>
-                    <option value="MY">Malaysia</option>
-                    <option value="MV">Maldives</option>
-                    <option value="ML">Mali</option>
-                    <option value="MT">Malta</option>
-                    <option value="MH">Marshall Islands</option>
-                    <option value="MQ">Martinique</option>
-                    <option value="MR">Mauritania</option>
-                    <option value="MU">Mauritius</option>
-                    <option value="YT">Mayotte</option>
-                    <option value="MX">Mexico</option>
-                    <option value="FM">Micronesia</option>
-                    <option value="MD">Moldova</option>
-                    <option value="MC">Monaco</option>
-                    <option value="MN">Mongolia</option>
-                    <option value="MS">Montserrat</option>
-                    <option value="MA">Morocco</option>
-                    <option value="MZ">Mozambique</option>
-                    <option value="MM">Myanmar</option>
-                    <option value="NA">Namibia</option>
-                    <option value="NR">Nauru</option>
-                    <option value="NP">Nepal</option>
-                    <option value="NL">Netherlands</option>
-                    <option value="AN">Netherlands Antilles</option>
-                    <option value="NC">New Caledonia</option>
-                    <option value="NZ">New Zealand</option>
-                    <option value="NI">Nicaragua</option>
-                    <option value="NE">Niger</option>
-                    <option value="NG">Nigeria</option>
-                    <option value="NU">Niue</option>
-                    <option value="NF">Norfolk Island</option>
-                    <option value="KP">North Korea</option>
-                    <option value="MP">Northern Mariana Islands</option>
-                    <option value="NO">Norway</option>
-                    <option value="OM">Oman</option>
-                    <option value="PK">Pakistan</option>
-                    <option value="PW">Palau</option>
-                    <option value="PA">Panama</option>
-                    <option value="PG">Papua New Guinea</option>
-                    <option value="PY">Paraguay</option>
-                    <option value="PE">Peru</option>
-                    <option value="PH">Philippines</option>
-                    <option value="PN">Pitcairn</option>
-                    <option value="PL">Poland</option>
-                    <option value="PT">Portugal</option>
-                    <option value="PR">Puerto Rico</option>
-                    <option value="QA">Qatar</option>
-                    <option value="RE">Reunion</option>
-                    <option value="RO">Romania</option>
-                    <option value="RU">Russian Federation</option>
-                    <option value="RW">Rwanda</option>
-                    <option value="KN">Saint Kitts And Nevis</option>
-                    <option value="LC">Saint Lucia</option>
-                    <option value="VC">Saint Vincent And The Grenadines</option>
-                    <option value="WS">Samoa</option>
-                    <option value="SM">San Marino</option>
-                    <option value="ST">Sao Tome And Principe</option>
-                    <option value="SA">Saudi Arabia</option>
-                    <option value="SN">Senegal</option>
-                    <option value="SC">Seychelles</option>
-                    <option value="SL">Sierra Leone</option>
-                    <option value="SG">Singapore</option>
-                    <option value="SK">Slovakia (Slovak Republic)</option>
-                    <option value="SI">Slovenia</option>
-                    <option value="SB">Solomon Islands</option>
-                    <option value="SO">Somalia</option>
-                    <option value="ZA">South Africa</option>
-                    <option value="GS">South Georgia And The South Sandwich Islands</option>
-                    <option value="KR">South Korea</option>
-                    <option value="ES">Spain</option>
-                    <option value="LK">Sri Lanka</option>
-                    <option value="SH">St. Helena</option>
-                    <option value="PM">St. Pierre And Miquelon</option>
-                    <option value="SD">Sudan</option>
-                    <option value="SR">Suriname</option>
-                    <option value="SJ">Svalbard And Jan Mayen Islands</option>
-                    <option value="SZ">Swaziland</option>
-                    <option value="SE">Sweden</option>
-                    <option value="CH">Switzerland</option>
-                    <option value="SY">Syrian Arab Republic</option>
-                    <option value="TW">Taiwan</option>
-                    <option value="TJ">Tajikistan</option>
-                    <option value="TZ">Tanzania</option>
-                    <option value="TH">Thailand</option>
-                    <option value="TG">Togo</option>
-                    <option value="TK">Tokelau</option>
-                    <option value="TO">Tonga</option>
-                    <option value="TT">Trinidad And Tobago</option>
-                    <option value="TN">Tunisia</option>
-                    <option value="TR">Turkey</option>
-                    <option value="TM">Turkmenistan</option>
-                    <option value="TC">Turks And Caicos Islands</option>
-                    <option value="TV">Tuvalu</option>
-                    <option value="UG">Uganda</option>
-                    <option value="UA">Ukraine</option>
-                    <option value="AE">United Arab Emirates</option>
-                    <option value="GB">United Kingdom</option>
-                    <option value="US">United States</option>
-                    <option value="UM">United States Minor Outlying Islands</option>
-                    <option value="UY">Uruguay</option>
-                    <option value="UZ">Uzbekistan</option>
-                    <option value="VU">Vanuatu</option>
-                    <option value="VE">Venezuela</option>
-                    <option value="VN">Viet Nam</option>
-                    <option value="VG">Virgin Islands (British)</option>
-                    <option value="VI">Virgin Islands (U.S.)</option>
-                    <option value="WF">Wallis And Futuna Islands</option>
-                    <option value="EH">Western Sahara</option>
-                    <option value="YE">Yemen</option>
-                    <option value="YU">Yugoslavia</option>
-                    <option value="ZR">Zaire</option>
-                    <option value="ZM">Zambia</option>
-                    <option value="ZW">Zimbabwe</option>
-                    </select>
-                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField2" data-valmsg-replace="true"></span>
-                        </div>
-                    </div>            </fieldset>
+                        <div ng-if="busTicketDetail.totalTickets > 1">
+                            <div id="ticket_form_buyer_main_contact" class="form-section">
+                            <fieldset>
+                                <legend class="subheader">Buyer Information</legend>
+                                <div id="field_wrapper_order__BuyerFirstName" class="form-group">
+                                    <label for="order__BuyerFirstName" class="col-md-4 control-label">First Name:<span class="required">*</span></label>
+                                    <div class="col-md-8 evnk-controls">
+                                        <input class="required form-control evnk-input " data-fieldid="order__BuyerFirstName" id="order__BuyerFirstName" maxlength="100" name="order.BuyerFirstName" style="font-family: Zawgyi-One;" type="text" value="">
+                                        <span class="field-validation-valid" data-valmsg-for="order.BuyerFirstName" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <div id="field_wrapper_order__BuyerLastName" class="form-group">
+                                    <label for="order__BuyerLastName" class="col-md-4 control-label">Last Name:<span class="required">*</span></label>
+                                    <div class="col-md-8 evnk-controls">
+                                        <input class="required form-control evnk-input " data-fieldid="order__BuyerLastName" id="order__BuyerLastName" maxlength="100" name="order.BuyerLastName" style="font-family: Zawgyi-One;" type="text" value="">
+                                        <span class="field-validation-valid" data-valmsg-for="order.BuyerLastName" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                                <div id="field_wrapper_order__BuyerEmail" class="form-group">
+                                    <label for="order__BuyerEmail" class="col-md-4 control-label">Email:<span class="required">*</span></label>
+                                    <div class="col-md-8 evnk-controls">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                            <input type="email" name="order.BuyerEmail" id="order__BuyerEmail" data-fieldid="order__BuyerEmail" class="required form-control evnk-input email " style="font-family: Zawgyi-One;" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                        </div>
+                                        <span class="help-block"><span class="label label-info">Note:</span> The confirmation email will be sent to this email.</span>
+                                        <span class="field-validation-valid" data-valmsg-for="order.BuyerEmail" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>                
+                            </fieldset>
                             </div>
+                            <div ng-repeat="ticket in busTicketDetail.tickets">
+                                <div ng-repeat="qty in [] | range:0:ticket.order_qty" id="ticketsform_{{ticket.RouteID}}_{{qty+1}}" class="form-section">
+                                <fieldset>
+                                <legend><span class="ticket-title-index">Ticket #{{qty+1}}</span> <span class="ticket-title-name">{{ticket.originPOI.title}}-&gt; {{ticket.destPOI.title}} - {{ticket.departureTime}} | {{ticket.bus.busClass}}({{ticket.bus.busClassDescription}})</span></legend>
+                                <div id="field_wrapper_Ticket0__-" class="form-group form-group-subheader">
+                                    <div class="subheader">
+                                        <h5>
+                                            Departure Date
+                                        </h5>
+                                    </div>
+                                </div>
+                                <input id="Ticket_0__TicketId" name="Ticket[0].TicketId" type="hidden" value="234">
+                                    <div id="field_wrapper_Ticket0__CustomField5" class="form-group">
+                                        <label for="Ticket0__CustomField5" class="col-md-4 control-label">Travel Date (dd-mm-yyyy) (E.g., 03-03-2017):<span class="required">*</span></label>
+                                        <div class="col-md-8 evnk-controls">
+                                            <input class="required form-control evnk-input  hasDatepicker" data-fieldid="Ticket0__CustomField5" id="Ticket0__CustomField5" maxlength="10" name="Ticket[0].CustomField5" style="font-family: Zawgyi-One;" type="text" value="">
+                                                <span class="help-block">min. 24 hours in advance required for booking arrangement prior to travel date.</span>
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField5" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__-" class="form-group form-group-subheader">
+                                        <div class="subheader">
+                                            <h5>
+                                                Passenger Details
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__FirstName" class="form-group">
+                                        <label for="Ticket0__FirstName" class="col-md-4 control-label">First Name:<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <input class="required form-control amb-input " data-fieldid="Ticket0__FirstName" id="Ticket0__FirstName" maxlength="100" name="Ticket[0].FirstName" style="font-family: Zawgyi-One;" type="text" value="">
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].FirstName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__LastName" class="form-group">
+                                        <label for="Ticket0__LastName" class="col-md-4 control-label">Last Name:<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <input class="required form-control amb-input " data-fieldid="Ticket0__LastName" id="Ticket0__LastName" maxlength="100" name="Ticket[0].LastName" style="font-family: Zawgyi-One;" type="text" value="">
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].LastName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__Email" class="form-group">
+                                        <label for="Ticket0__Email" class="col-md-4 control-label">Email:<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                                <input type="email" name="Ticket[0].Email" id="Ticket0__Email" data-fieldid="Ticket0__Email" class="required form-control amb-input email " style="font-family: Zawgyi-One;" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                            </div>
+                                            <span class="help-block"><span class="label label-info">Note:</span> The confirmation email will be sent to this email.</span>
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].Email" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__CustomField1" class="form-group">
+                                        <label for="Ticket0__CustomField1" class="col-md-4 control-label">Contact Number:<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <input class="required form-control amb-input " data-fieldid="Ticket0__CustomField1" id="Ticket0__CustomField1" maxlength="40" name="Ticket[0].CustomField1" style="font-family: Zawgyi-One;" type="text" value="">
+                                                <span class="help-block">country code + number (E.g., (+65) 6682-6572</span>
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField1" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div id="field_wrapper_Ticket0__CustomField2" class="form-group">
+                                        <label for="Ticket0__CustomField2" class="col-md-4 control-label">Nationality:<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <select class="required form-control amb-input " data-fieldid="Ticket0__CustomField2" id="Ticket0__CustomField2" name="Ticket[0].CustomField2">
+                                            <option value=""></option>
+                                            <option value="MM">Myanmar</option>
+                                            </select>
+                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField2" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        </div>
+
                                     <div id="payment_options_form" class="form-section section-payment-options clearfix">
                                         <fieldset>
                                             <legend><span class="payment-option-title">Choose Payment Method</span></legend>
@@ -457,7 +324,7 @@
                                     <div class="section-action clearfix">
                                         <div class="payment-summary">
                                             <span>Total Payment: </span>
-                                            <span>USD $25.00</span>
+                                            <span>{{grandTotal | currency:"USD "}}</span>
                                         </div>
                                         <button id="btnProceedPayment" type="submit" class="btn btn-register btn-reg-payment" data-loading-text="Submitting...">Proceed with Order</button>
 

@@ -93,6 +93,7 @@ $scope.hasQuantity = function(index) {
     $scope.formData.tickets = [];
 
     //BOOK BUS TICKET
+    $scope.formData.totalTickets = 0;
     $scope.processForm = function () {
           var checkQty = Object.keys($scope.formData.order_quantity);
             var arrayQty = [];
@@ -100,6 +101,7 @@ $scope.hasQuantity = function(index) {
                     angular.forEach($scope.formData.order_quantity, function(value1, key1){
                     if(value1 > 0){
                         if(key1 == value.RouteID){
+                            $scope.formData.totalTickets += value1;
                             value.order_qty = value1;
                             value.fare = value.fare.substring(3, value.fare.length);
                             arrayQty.push(value);
@@ -120,6 +122,11 @@ $scope.hasQuantity = function(index) {
 
 busModule.controller('busTicketPaymentController',function ($scope,$routeParams,busServices,$location,Scopes) {
     $scope.busTicketDetail ={};
+    $scope.getNumber = function(num) {
+        return new Array(num);   
+    }
+    $scope.totalTickets = 0;
+
     $scope.busTicketDetail = Scopes.get('busBookTicketController');
     $scope.subTotal = 0;
     $scope.grandTotal = 0;
@@ -131,6 +138,8 @@ busModule.controller('busTicketPaymentController',function ($scope,$routeParams,
             $scope.grandTotal = $scope.subTotal;
         }
         $scope.calculate();
+        console.log($scope.totalTickets);
+        console.log($scope.busTicketDetail.order_quantity);
         console.log($scope.busTicketDetail);
     }else{
         $location.path("/not-found");
