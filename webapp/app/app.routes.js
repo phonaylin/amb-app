@@ -49,7 +49,7 @@ function config ($routeProvider,$httpProvider) {
 	})
 	.when('/not-found',{
 		templateUrl :'components/core/pageNotFound.html',
-		controller: 'busStationsController'
+		controller: 'busController'
 	})
 	.otherwise({
 			redirectTo: '/'

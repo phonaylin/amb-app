@@ -36,4 +36,32 @@ http://52.77.49.9:9000/busroutes/search
 
 http://52.77.49.9:9000/busroutes/2
 
+
+
+Order Request
+{
+	"buyerEmailAddress": "phonaylin@gmail.com",
+	"buyerMobileNumber": "82011660",
+	"travelDate": "2017-03-20",
+    "comment": "Whatever man",
+    "orderItems": [
+    	{
+    		"passengerFirstName": "Nay Lin",
+			  "passengerLastName": "Aung",
+			  "passengerEmailAddress": "phonaylin@gmail.com",
+			  "passengerContactNumber": "+6582011660",
+    		"travelDate": "2017-01-01",
+    		"ticketNumber" : "aaa"
+    	},
+    	{
+    		"passengerFirstName": "Nay Lin",
+			  "passengerLastName": "Aung",
+			  "passengerEmailAddress": "phonaylin@gmail.com",
+			  "passengerContactNumber": "+6582011660",
+    		"travelDate": "2017-01-01",
+    		"ticketNumber" : "aaa"
+    	}
+    ],
+	"busRoute": "http://localhost:9000/busroutes/2"
+  }
 */

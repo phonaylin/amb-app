@@ -1,4 +1,4 @@
-var busModule = angular.module('busModule', []);
+var busModule = angular.module('busModule', ['ngCookies']);
 
 
 busModule.filter('getRouteId',function(){

@@ -106,7 +106,7 @@
                     <form ng-submit="registerBooking()"  class="form-horizontal" id="form_register_details" method="post" novalidate="novalidate">
                         <div class="attendee-form-instruction"><h3>Please complete your booking details.</h3></div>
                         <div ng-if="busTicketDetail.totalTickets == 1" >
-                            <div id="ticket_form_wrapper_250424_234_0" class="form-section">
+                            <div ng-repeat="ticket in busTicketDetail.tickets" id="ticket_form" class="form-section">
                                 <fieldset>
                                 <legend><span class="ticket-title-index">Ticket #1</span> <span class="ticket-title-name">{{ticket.originPOI.title}}-&gt; {{ticket.destPOI.title}} - {{ticket.departureTime}} | {{ticket.bus.busClass}}({{ticket.bus.busClassDescription}})</span></legend>
                                 <div id="field_wrapper_Ticket0__-" class="form-group form-group-subheader">
@@ -116,13 +116,14 @@
                                         </h5>
                                     </div>
                                 </div>
-                                <input id="Ticket_0__TicketId" name="Ticket[0].TicketId" type="hidden" value="234">
+                                <input id="ticket_{{$index}}" name="ticket_{{$index}}" type="hidden" value="{{ticket.RouteID}}">
                                     <div id="field_wrapper_Ticket0__CustomField5" class="form-group">
-                                        <label for="Ticket0__CustomField5" class="col-md-4 control-label">Travel Date (dd-mm-yyyy) (E.g., 03-03-2017):<span class="required">*</span></label>
-                                        <div class="col-md-8 evnk-controls">
-                                            <input class="required form-control evnk-input  hasDatepicker" data-fieldid="Ticket0__CustomField5" id="Ticket0__CustomField5" maxlength="10" name="Ticket[0].CustomField5" style="font-family: Zawgyi-One;" type="text" value="">
-                                                <span class="help-block">min. 24 hours in advance required for booking arrangement prior to travel date.</span>
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField5" data-valmsg-replace="true"></span>
+                                        <label for="Ticket_departureDate" class="col-md-4 control-label">Travel Date (dd-mm-yyyy) (E.g., 03-03-2017):<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                             <datepicker date-min-limit="{{minDate}}" date-format="dd-MM-yyyy" selector="form-control" >
+                                                <input id="ticket_departureDate" class="required form-control amb-input" ng-model="ticketForm[$index].departureDate" type="text" placeholder="Choose a date"/>
+                                            </datepicker>
+                                            <span class="help-block">min. 24 hours in advance required for booking arrangement prior to travel date.</span>
                                         </div>
                                     </div>
                                     <div id="field_wrapper_Ticket0__-" class="form-group form-group-subheader">
@@ -132,47 +133,35 @@
                                             </h5>
                                         </div>
                                     </div>
-                                    <div id="field_wrapper_Ticket0__FirstName" class="form-group">
-                                        <label for="Ticket0__FirstName" class="col-md-4 control-label">First Name:<span class="required">*</span></label>
+                                    <div id="field_wrapper_ticketForm[$index].FirstName" class="form-group">
+                                        <label for="ticketForm[$index].FirstName" class="col-md-4 control-label">First Name:<span class="required">*</span></label>
                                         <div class="col-md-8 amb-controls">
-                                            <input class="required form-control amb-input " data-fieldid="Ticket0__FirstName" id="Ticket0__FirstName" maxlength="100" name="Ticket[0].FirstName" style="font-family: Zawgyi-One;" type="text" value="">
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].FirstName" data-valmsg-replace="true"></span>
+                                            <input class="required form-control amb-input "
+                                            ng-model="ticketForm[$index].FirstName" maxlength="100" type="text" value="">
                                         </div>
                                     </div>
-                                    <div id="field_wrapper_Ticket0__LastName" class="form-group">
-                                        <label for="Ticket0__LastName" class="col-md-4 control-label">Last Name:<span class="required">*</span></label>
+                                    <div id="field_wrapper_ticketForm[$index].LastName" class="form-group">
+                                        <label for="ticketForm[$index].LastName" class="col-md-4 control-label">Last Name:<span class="required">*</span></label>
                                         <div class="col-md-8 amb-controls">
-                                            <input class="required form-control amb-input " data-fieldid="Ticket0__LastName" id="Ticket0__LastName" maxlength="100" name="Ticket[0].LastName" style="font-family: Zawgyi-One;" type="text" value="">
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].LastName" data-valmsg-replace="true"></span>
+                                            <input class="required form-control amb-input " ng-model="ticketForm[$index].LastName" id="ticketForm[$index].LastName" maxlength="100" name="ticketForm[$index].LastName"  type="text" value="">
                                         </div>
                                     </div>
-                                    <div id="field_wrapper_Ticket0__Email" class="form-group">
-                                        <label for="Ticket0__Email" class="col-md-4 control-label">Email:<span class="required">*</span></label>
+                                    <div id="field_wrapper_ticketForm[$index].Email" class="form-group">
+                                        <label for="ticketForm[$index].Email" class="col-md-4 control-label">Email:<span class="required">*</span></label>
                                         <div class="col-md-8 amb-controls">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                                <input type="email" name="Ticket[0].Email" id="Ticket0__Email" data-fieldid="Ticket0__Email" class="required form-control amb-input email " style="font-family: Zawgyi-One;" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                                <input type="email" name="Ticket[0].Email" id="ticketForm[$index].Email" ng-model="ticketForm[$index].Email" class="required form-control amb-input email "  autocorrect="off" autocapitalize="off" spellcheck="false">
                                             </div>
                                             <span class="help-block"><span class="label label-info">Note:</span> The confirmation email will be sent to this email.</span>
                                             <span class="field-validation-valid" data-valmsg-for="Ticket[0].Email" data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
-                                    <div id="field_wrapper_Ticket0__CustomField1" class="form-group">
-                                        <label for="Ticket0__CustomField1" class="col-md-4 control-label">Contact Number:<span class="required">*</span></label>
+                                    <div id="field_wrapper_ticketForm[$index].contactNo" class="form-group">
+                                        <label for="ticketForm[$index].contactNo" class="col-md-4 control-label">Contact Number:<span class="required">*</span></label>
                                         <div class="col-md-8 amb-controls">
-                                            <input class="required form-control amb-input " data-fieldid="Ticket0__CustomField1" id="Ticket0__CustomField1" maxlength="40" name="Ticket[0].CustomField1" style="font-family: Zawgyi-One;" type="text" value="">
-                                                <span class="help-block">country code + number (E.g., (+65) 6682-6572</span>
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField1" data-valmsg-replace="true"></span>
-                                        </div>
-                                    </div>
-                                    <div id="field_wrapper_Ticket0__CustomField2" class="form-group">
-                                        <label for="Ticket0__CustomField2" class="col-md-4 control-label">Nationality:<span class="required">*</span></label>
-                                        <div class="col-md-8 amb-controls">
-                                            <select class="required form-control amb-input " data-fieldid="Ticket0__CustomField2" id="Ticket0__CustomField2" name="Ticket[0].CustomField2">
-                                            <option value=""></option>
-                                            <option value="MM">Myanmar</option>
-                                            </select>
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField2" data-valmsg-replace="true"></span>
+                                            <input class="required form-control amb-input " ng-model="ticketForm[$index].contactNo" id="ticketForm[$index].contactNo" ng-maxlength="40" name="ticketForm[$index].contactNo"  type="text" value="">
+                                                <span class="help-block">country code + number (E.g., (+95) 95144943</span>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -182,29 +171,26 @@
                             <div id="ticket_form_buyer_main_contact" class="form-section">
                             <fieldset>
                                 <legend class="subheader">Buyer Information</legend>
-                                <div id="field_wrapper_order__BuyerFirstName" class="form-group">
-                                    <label for="order__BuyerFirstName" class="col-md-4 control-label">First Name:<span class="required">*</span></label>
-                                    <div class="col-md-8 evnk-controls">
-                                        <input class="required form-control evnk-input " data-fieldid="order__BuyerFirstName" id="order__BuyerFirstName" maxlength="100" name="order.BuyerFirstName" style="font-family: Zawgyi-One;" type="text" value="">
-                                        <span class="field-validation-valid" data-valmsg-for="order.BuyerFirstName" data-valmsg-replace="true"></span>
+                                <div id="field_wrapper_ticketForm.BuyerFirstName" class="form-group">
+                                    <label for="ticketForm.BuyerFirstName" class="col-md-4 control-label">First Name:<span class="required">*</span></label>
+                                    <div class="col-md-8 amb-controls">
+                                        <input class="required form-control amb-input " ng-model="ticketForm.BuyerFirstName" id="ticketForm.BuyerFirstName" maxlength="100" name="ticketForm.BuyerFirstName"  type="text" value="">
                                     </div>
                                 </div>
-                                <div id="field_wrapper_order__BuyerLastName" class="form-group">
-                                    <label for="order__BuyerLastName" class="col-md-4 control-label">Last Name:<span class="required">*</span></label>
-                                    <div class="col-md-8 evnk-controls">
-                                        <input class="required form-control evnk-input " data-fieldid="order__BuyerLastName" id="order__BuyerLastName" maxlength="100" name="order.BuyerLastName" style="font-family: Zawgyi-One;" type="text" value="">
-                                        <span class="field-validation-valid" data-valmsg-for="order.BuyerLastName" data-valmsg-replace="true"></span>
+                                <div id="field_wrapper_ticketForm.BuyerLastName" class="form-group">
+                                    <label for="ticketForm.BuyerLastName" class="col-md-4 control-label">Last Name:<span class="required">*</span></label>
+                                    <div class="col-md-8 amb-controls">
+                                        <input class="required form-control amb-input " ng-model="ticketForm.BuyerLastName" id="ticketForm.BuyerLastName" maxlength="100" name="ticketForm.BuyerLastName"  type="text" value="">
                                     </div>
                                 </div>
-                                <div id="field_wrapper_order__BuyerEmail" class="form-group">
-                                    <label for="order__BuyerEmail" class="col-md-4 control-label">Email:<span class="required">*</span></label>
-                                    <div class="col-md-8 evnk-controls">
+                                <div id="field_wrapper_ticketForm.BuyerEmail" class="form-group">
+                                    <label for="ticketForm.BuyerEmail" class="col-md-4 control-label">Email:<span class="required">*</span></label>
+                                    <div class="col-md-8 amb-controls">
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                            <input type="email" name="order.BuyerEmail" id="order__BuyerEmail" data-fieldid="order__BuyerEmail" class="required form-control evnk-input email " style="font-family: Zawgyi-One;" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                            <input type="email" name="ticketForm.BuyerEmail" id="ticketForm.BuyerEmail" ng-model="ticketForm.BuyerEmail" class="required form-control amb-input email "  autocorrect="off" autocapitalize="off" spellcheck="false">
                                         </div>
                                         <span class="help-block"><span class="label label-info">Note:</span> The confirmation email will be sent to this email.</span>
-                                        <span class="field-validation-valid" data-valmsg-for="order.BuyerEmail" data-valmsg-replace="true"></span>
                                     </div>
                                 </div>                
                             </fieldset>
@@ -222,61 +208,48 @@
                                 </div>
                                 <input id="Ticket_0__TicketId" name="Ticket[0].TicketId" type="hidden" value="234">
                                     <div id="field_wrapper_Ticket0__CustomField5" class="form-group">
-                                        <label for="Ticket0__CustomField5" class="col-md-4 control-label">Travel Date (dd-mm-yyyy) (E.g., 03-03-2017):<span class="required">*</span></label>
-                                        <div class="col-md-8 evnk-controls">
-                                            <input class="required form-control evnk-input  hasDatepicker" data-fieldid="Ticket0__CustomField5" id="Ticket0__CustomField5" maxlength="10" name="Ticket[0].CustomField5" style="font-family: Zawgyi-One;" type="text" value="">
+                                        <label for="ticket_departureDate" class="col-md-4 control-label">Travel Date (dd-mm-yyyy) (E.g., 03-03-2017):<span class="required">*</span></label>
+                                        <div class="col-md-8 amb-controls">
+                                            <datepicker date-min-limit="{{minDate}}" date-format="dd-MM-yyyy" selector="form-control" >
+                                                <input id="ticketForm[$index].departureDate" class="required form-control amb-input" ng-model="ticketForm[$index].departureDate" type="text" placeholder="Choose a date"/>
+                                            </datepicker>
                                                 <span class="help-block">min. 24 hours in advance required for booking arrangement prior to travel date.</span>
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField5" data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
-                                    <div id="field_wrapper_Ticket0__-" class="form-group form-group-subheader">
+                                    <div id="field_wrapper_ticketForm[$index]__-" class="form-group form-group-subheader">
                                         <div class="subheader">
                                             <h5>
                                                 Passenger Details
                                             </h5>
                                         </div>
                                     </div>
-                                    <div id="field_wrapper_Ticket0__FirstName" class="form-group">
-                                        <label for="Ticket0__FirstName" class="col-md-4 control-label">First Name:<span class="required">*</span></label>
+                                    <div id="field_wrapper_ticketForm[$index].FirstName" class="form-group">
+                                        <label for="ticketForm[$index].FirstName" class="col-md-4 control-label">First Name:<span class="required">*</span></label>
                                         <div class="col-md-8 amb-controls">
-                                            <input class="required form-control amb-input " data-fieldid="Ticket0__FirstName" id="Ticket0__FirstName" maxlength="100" name="Ticket[0].FirstName" style="font-family: Zawgyi-One;" type="text" value="">
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].FirstName" data-valmsg-replace="true"></span>
+                                            <input class="required form-control amb-input " ng-model="ticketForm[$index].FirstName" id="ticketForm[$index].FirstName" maxlength="100" name="ticketForm[$index].FirstName"  type="text" value="">
                                         </div>
                                     </div>
-                                    <div id="field_wrapper_Ticket0__LastName" class="form-group">
-                                        <label for="Ticket0__LastName" class="col-md-4 control-label">Last Name:<span class="required">*</span></label>
+                                    <div id="field_wrapper_ticketForm[$index].LastName" class="form-group">
+                                        <label for="ticketForm[$index].LastName" class="col-md-4 control-label">Last Name:<span class="required">*</span></label>
                                         <div class="col-md-8 amb-controls">
-                                            <input class="required form-control amb-input " data-fieldid="Ticket0__LastName" id="Ticket0__LastName" maxlength="100" name="Ticket[0].LastName" style="font-family: Zawgyi-One;" type="text" value="">
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].LastName" data-valmsg-replace="true"></span>
+                                            <input class="required form-control amb-input " ng-model="ticketForm[$index].LastName" id="ticketForm[$index].LastName" maxlength="100" name="ticketForm[$index].LastName"  type="text" value="">
                                         </div>
                                     </div>
-                                    <div id="field_wrapper_Ticket0__Email" class="form-group">
-                                        <label for="Ticket0__Email" class="col-md-4 control-label">Email:<span class="required">*</span></label>
+                                    <div id="field_wrapper_ticketForm[$index].Email" class="form-group">
+                                        <label for="ticketForm[$index].Email" class="col-md-4 control-label">Email:<span class="required">*</span></label>
                                         <div class="col-md-8 amb-controls">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                                <input type="email" name="Ticket[0].Email" id="Ticket0__Email" data-fieldid="Ticket0__Email" class="required form-control amb-input email " style="font-family: Zawgyi-One;" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                                <input type="email" name="ticketForm[$index].Email" id="ticketForm[$index].Email" ng-model="ticketForm[$index].Email" class="required form-control amb-input email "  autocorrect="off" autocapitalize="off" spellcheck="false">
                                             </div>
                                             <span class="help-block"><span class="label label-info">Note:</span> The confirmation email will be sent to this email.</span>
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].Email" data-valmsg-replace="true"></span>
                                         </div>
                                     </div>
-                                    <div id="field_wrapper_Ticket0__CustomField1" class="form-group">
-                                        <label for="Ticket0__CustomField1" class="col-md-4 control-label">Contact Number:<span class="required">*</span></label>
+                                    <div id="field_wrapper_ticketForm[$index].ContactNo" class="form-group">
+                                        <label for="ticketForm[$index].ContactNo" class="col-md-4 control-label">Contact Number:<span class="required">*</span></label>
                                         <div class="col-md-8 amb-controls">
-                                            <input class="required form-control amb-input " data-fieldid="Ticket0__CustomField1" id="Ticket0__CustomField1" maxlength="40" name="Ticket[0].CustomField1" style="font-family: Zawgyi-One;" type="text" value="">
-                                                <span class="help-block">country code + number (E.g., (+65) 6682-6572</span>
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField1" data-valmsg-replace="true"></span>
-                                        </div>
-                                    </div>
-                                    <div id="field_wrapper_Ticket0__CustomField2" class="form-group">
-                                        <label for="Ticket0__CustomField2" class="col-md-4 control-label">Nationality:<span class="required">*</span></label>
-                                        <div class="col-md-8 amb-controls">
-                                            <select class="required form-control amb-input " data-fieldid="Ticket0__CustomField2" id="Ticket0__CustomField2" name="Ticket[0].CustomField2">
-                                            <option value=""></option>
-                                            <option value="MM">Myanmar</option>
-                                            </select>
-                                            <span class="field-validation-valid" data-valmsg-for="Ticket[0].CustomField2" data-valmsg-replace="true"></span>
+                                            <input class="required form-control amb-input " data-fieldid="ticketForm[$index].ContactNo" id="ticketForm[$index].ContactNo" maxlength="40" name="ticketForm[$index].ContactNo"  type="text" value="">
+                                            <span class="help-block">country code + number (E.g., (+95) 95144943</span>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -291,7 +264,7 @@
                                                     <div class="controls payment-stripe">
                                                         <div class="radio">
                                                             <label>
-                                                                <input class="required" id="order_PaymentType" name="order.PaymentType" type="radio" value="STRIPE"> Pay with Visa, Master and Amex:
+                                                                <input ng-model="ticketForm.PaymentMethod" class="required" id="order_PaymentType" name="order.PaymentType" type="radio" value="STRIPE"> Pay with Visa, Master and Amex:
                                                                 <img style="position: relative; top: 0px; margin-left: 0px; width: 40px" src="assets/images/paymenticon/visa-curved-32px.png">
                                                                 <img style="position: relative; top: 0px; margin-left: 0px; width: 40px" src="assets/images/paymenticon/mastercard-curved-32px.png">
                                                                 <img style="position: relative; top: 0px; margin-left: 0px; width: 40px" src="assets/images/paymenticon/american-express-curved-32px.png">
@@ -302,12 +275,12 @@
                                                         </div>
                                                         <div class="help-block help-payment-stripe" style="display:none">
                                                         </div>
-                                                        <input type="hidden" id="token" name="token" style="font-family: Zawgyi-One;">
+                                                        <input type="hidden" id="token" name="token" >
                                                     </div>
                                                                                 <div class="controls payment-paypal">
                                                         <div class="radio">
                                                             <label>
-                                                                <input class="required" id="order_PaymentType" name="order.PaymentType" type="radio" value="PAYPAL"> PayPal (accept Credit Card):
+                                                                <input  ng-model="ticketForm.PaymentMethod" class="required" id="order_PaymentType" name="order.PaymentType" type="radio" value="PAYPAL"> PayPal (accept Credit Card):
                                                                  <img style="position: relative; top: 0px; margin-left: 0px; width: 40px" src="assets/images/paymenticon/paypal-curved-32px.png">
                                                                   <img style="position: relative; top: 0px; margin-left: 0px; width: 40px" src="assets/images/paymenticon/mastercard-curved-32px.png">
                                                                    <img style="position: relative; top: 0px; margin-left: 0px; width: 40px" src="assets/images/paymenticon/visa-curved-32px.png">

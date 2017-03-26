@@ -1,4 +1,4 @@
-var ambApp = angular.module('ambApp', ['ngRoute','ngResource','ambApp.Route','busModule','ui.bootstrap','moment-picker']);
+var ambApp = angular.module('ambApp', ['ngRoute','ngResource','ambApp.Route','busModule','ui.bootstrap','720kb.datepicker','moment-picker','ngCookies']);
 ambApp.config(['$routeProvider', '$locationProvider','$httpProvider', function ($routeProvider, $locationProvider,$httpProvider) {
 	// $httpProvider.defaults.useXDomain = true;
 	$locationProvider.hashPrefix('');

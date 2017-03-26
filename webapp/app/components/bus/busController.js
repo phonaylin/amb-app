@@ -1,36 +1,38 @@
-busModule.controller('busController',function ($scope,$routeParams,$log,busServices,$location,Scopes) {
+busModule.controller('busController',function ($scope,$routeParams,$log,busServices,$location,Scopes,$cookies) {
     
     $scope.back = function () {
         window.history.back();
     };
-    $scope.cityIdmapping = [];
-	$scope.bus = 'This is bus';
+    $scope.cityIdmapping = [];	
 	$scope.busRouteByCity = [];
 	$scope.busRouteList = function(){
 			busServices.getBusRoutes().then(function(response) { 
 			    $scope.busPOIList = response.data._embedded.busroutes;
 				var tempTitle = '';
+                var destinTitle = '';
 				var num = 0;
 				for(var i=0;i<$scope.busPOIList.length;i++){			
-					var title = $scope.busPOIList[i]['originPOI']['title'];		
+					var title = $scope.busPOIList[i]['originPOI']['title'];
+                    var destin = $scope.busPOIList[i]['destPOI']['title'];		
 					if(tempTitle != title){
 						num = i;
 						$scope.busRouteByCity.push({RouteName:title,RouteList:[$scope.busPOIList[i]]});
 						tempTitle = title;
+                        destinTitle = destin;
 					}else{
-					    $scope.busRouteByCity[num].RouteList.push($scope.busPOIList[i]);
+                        var routeName = tempTitle+destin;
+                        var diffrouteName = title+destinTitle;
+                        if(routeName != diffrouteName ){
+                            $scope.busRouteByCity[num].RouteList.push($scope.busPOIList[i]);    
+                        }
 					}
-                    // var link = $scope.busPOIList[i]._links.self.href;
-					// var n  = link.split('/');
-                    // var RouteId = n[n.length - 1];
-                    // $scope.busRouteByCity[num].RouteList[i]['RouteID'] = RouteId;
 				}
 			});            
 	};
     $scope.busRouteList();
 });
 
-busModule.controller('busBookTicketController',function ($scope,$routeParams,$log,busServices,$location,Scopes) {
+busModule.controller('busBookTicketController',function ($cookies,$scope,$routeParams,$log,busServices,$location,Scopes) {
 
 $scope.quantity = [0,1,2,3,4,5,6,7,8,9,10];
 
@@ -115,22 +117,50 @@ $scope.hasQuantity = function(index) {
                 $scope.messages = 'You haven\'t select any ticket yet';     
              }else{ 
                 Scopes.store('busBookTicketController', $scope.formData);
+                $cookies.putObject('busTicketDetail', $scope.formData);
                 $location.path("/booking/bus-ticket-payment-details/");
              }
     };
 });
 
-busModule.controller('busTicketPaymentController',function ($scope,$routeParams,busServices,$location,Scopes) {
+busModule.controller('busTicketPaymentController',function ($cookies,$scope,$routeParams,busServices,$location,Scopes) {
+    $scope.minDate = new Date()+1;
     $scope.busTicketDetail ={};
     $scope.getNumber = function(num) {
         return new Array(num);   
     }
     $scope.totalTickets = 0;
-
+//     $scope.ticketForm = {
+//         "buyerEmailAddress": "phonaylin@gmail.com",
+//         "buyerMobileNumber": "82011660",
+//         "travelDate": "2017-03-20",
+//         "comment": "Whatever man",
+//         "orderItems": [
+//             {
+//                 "passengerFirstName": "Nay Lin",
+//                 "passengerLastName": "Aung",
+//                 "passengerEmailAddress": "phonaylin@gmail.com",
+//                 "passengerContactNumber": "+6582011660",
+//                 "travelDate": "2017-01-01",
+//                 "ticketNumber" : "aaa"
+//             },
+//             {
+//                 "passengerFirstName": "Nay Lin",
+//                 "passengerLastName": "Aung",
+//                 "passengerEmailAddress": "phonaylin@gmail.com",
+//                 "passengerContactNumber": "+6582011660",
+//                 "travelDate": "2017-01-01",
+//                 "ticketNumber" : "aaa"
+//             }
+//         ],
+//         "busRoute": "http://localhost:9000/busroutes/2"
+//   };
+    $scope.ticketForm = {};
     $scope.busTicketDetail = Scopes.get('busBookTicketController');
-    $scope.subTotal = 0;
+    $scope.subTotal = 0;  
     $scope.grandTotal = 0;
-    if($scope.busTicketDetail){
+    if($cookies.getObject('busTicketDetail')){
+        $scope.busTicketDetail = $cookies.getObject('busTicketDetail');
         $scope.calculate = function() {
             angular.forEach($scope.busTicketDetail.tickets,function(value,key){
                 $scope.subTotal += (value.fare*value.order_qty);
@@ -138,11 +168,18 @@ busModule.controller('busTicketPaymentController',function ($scope,$routeParams,
             $scope.grandTotal = $scope.subTotal;
         }
         $scope.calculate();
-        console.log($scope.totalTickets);
-        console.log($scope.busTicketDetail.order_quantity);
-        console.log($scope.busTicketDetail);
     }else{
         $location.path("/not-found");
+    }
+    $scope.registerBooking = function(){
+        if($scope.ticketForm){
+            $cookies.remove('busTicketDetail');
+            console.log($scope.ticketForm);    
+            if($scope.ticketForm.paymentMethod=='PAYPAL'){
+
+            }
+        }
+        console.log('This is booking payment page');
     }
 });
 
