@@ -32,10 +32,9 @@ busModule.controller('busController',function ($scope,$routeParams,$log,busServi
     $scope.busRouteList();
 });
 
-busModule.controller('busBookTicketController',function ($cookies,$scope,$routeParams,$log,busServices,$location,Scopes) {
+busModule.controller('busBookTicketController',function ($cookies,$cookieStore,$scope,$routeParams,$log,busServices,$location,Scopes) {
 
 $scope.quantity = [0,1,2,3,4,5,6,7,8,9,10];
-
 $scope.hasQuantity = function(index) {
         var toy = $scope.quantity[index];
         if (toy <= 0) {
@@ -79,7 +78,6 @@ $scope.hasQuantity = function(index) {
                             }
                             $scope.busRouteListbyCity['fromCity'] = $scope.currfromCity;
                             $scope.busRouteListbyCity['toCity'] = $scope.currtoCity;
-                            console.log($scope.formData);
                     });
                 }
             });
@@ -112,7 +110,7 @@ $scope.hasQuantity = function(index) {
                     });
                 });
              $scope.formData.tickets = arrayQty;
-             console.log($scope.formData.tickets);
+             //console.log($scope.formData.tickets);
              if($scope.formData.tickets.length <= 0){
                 $scope.messages = 'You haven\'t select any ticket yet';     
              }else{ 
@@ -123,38 +121,13 @@ $scope.hasQuantity = function(index) {
     };
 });
 
-busModule.controller('busTicketPaymentController',function ($cookies,$scope,$routeParams,busServices,$location,Scopes) {
+busModule.controller('busTicketPaymentController',function ($cookies,$cookieStore,coreService,$scope,$routeParams,busServices,$location,Scopes) {
     $scope.minDate = new Date()+1;
     $scope.busTicketDetail ={};
     $scope.getNumber = function(num) {
         return new Array(num);   
     }
     $scope.totalTickets = 0;
-//     $scope.ticketForm = {
-//         "buyerEmailAddress": "phonaylin@gmail.com",
-//         "buyerMobileNumber": "82011660",
-//         "travelDate": "2017-03-20",
-//         "comment": "Whatever man",
-//         "orderItems": [
-//             {
-//                 "passengerFirstName": "Nay Lin",
-//                 "passengerLastName": "Aung",
-//                 "passengerEmailAddress": "phonaylin@gmail.com",
-//                 "passengerContactNumber": "+6582011660",
-//                 "travelDate": "2017-01-01",
-//                 "ticketNumber" : "aaa"
-//             },
-//             {
-//                 "passengerFirstName": "Nay Lin",
-//                 "passengerLastName": "Aung",
-//                 "passengerEmailAddress": "phonaylin@gmail.com",
-//                 "passengerContactNumber": "+6582011660",
-//                 "travelDate": "2017-01-01",
-//                 "ticketNumber" : "aaa"
-//             }
-//         ],
-//         "busRoute": "http://localhost:9000/busroutes/2"
-//   };
     $scope.ticketForm = {};
     $scope.busTicketDetail = Scopes.get('busBookTicketController');
     $scope.subTotal = 0;  
@@ -171,12 +144,65 @@ busModule.controller('busTicketPaymentController',function ($cookies,$scope,$rou
     }else{
         $location.path("/not-found");
     }
+    //console.log($scope.busTicketDetail);
     $scope.registerBooking = function(){
         if($scope.ticketForm){
-            $cookies.remove('busTicketDetail');
-            console.log($scope.ticketForm);    
-            if($scope.ticketForm.paymentMethod=='PAYPAL'){
+            //$cookies.remove('busTicketDetail');
+            if(Object.keys($scope.ticketForm.passengerData).length == 1){
+                $scope.bookTicketForm = {
+                    "buyerEmailAddress": $scope.ticketForm.passengerData[0].Email,
+                    "buyerMobileNumber": $scope.ticketForm.passengerData[0].contactNo,
+                    "buyerFirstName":$scope.ticketForm.passengerData[0].FirstName,
+                    "buyerLastName":$scope.ticketForm.passengerData[0].LastName,
+                    "comment": "This is empty value",
+                    "orderItems": [
+                        {
+                            "passengerFirstName": $scope.ticketForm.passengerData[0].FirstName,
+                            "passengerLastName": $scope.ticketForm.passengerData[0].LastName,
+                            "passengerEmailAddress": $scope.ticketForm.passengerData[0].Email,
+                            "passengerContactNumber": $scope.ticketForm.passengerData[0].contactNo,
+                            "travelDate":  $scope.ticketForm.passengerData[0].departureDate,
+                            "ticketNumber" : "This is empty"
+                        }
+                    ],
+                    "busRoute": APIURL+"busroutes/"+$scope.ticketForm.passengerData[0].RouteID
+                };
+            }else if(Object.keys($scope.ticketForm.passengerData).length > 1){
+                $scope.bookTicketForm = {
+                    "buyerEmailAddress": $scope.ticketForm.BuyerEmail,
+                    "buyerMobileNumber": $scope.ticketForm.BuyerContactNo,
+                    "buyerFirstName":$scope.ticketForm.BuyerFirstName,
+                    "buyerLastName":$scope.ticketForm.BuyerFirstName,
+                    "comment": "This is empty value"
+                };
+                for(var i=0;i<$scope.ticketForm.length;i++){
+                    $scope.bookTicketForm.orderItems = {
+                            "passengerFirstName"        : $scope.ticketForm.passengerData[i].FirstName,
+                            "passengerLastName"         : $scope.ticketForm.passengerData[i].LastName,
+                            "passengerEmailAddress"     : $scope.ticketForm.passengerData[i].Email,
+                            "passengerContactNumber"    : $scope.ticketForm.passengerData[i].contactNo,
+                            "travelDate"                : $scope.ticketForm.passengerData[i].departureDate,
+                            "ticketNumber"              : "This is empty",
+                            "busRoute"                  : APIURL+"busroutes/"+$scope.ticketForm.passengerData[i].RouteID
+                        };
+                }
+            };
+            //console.log($scope.bookTicketForm);    
+            if($scope.ticketForm.PaymentMethod=='PAYPAL'){
+                busServices.orderBusTicket($scope.bookTicketForm).then(function(response)
+                {
+                    
+                    console.log(response);
+                    $location.path("/redirecting-paymentpage");
+                });
+            }else if($scope.ticketForm.PaymentMethod=='MPU'){
 
+            }else if($scope.ticketForm.PaymentMethod=='KBZPAY'){
+                
+            }else if($scope.ticketForm.PaymentMethod=='CBPAY'){
+                
+            }else if($scope.ticketForm.PaymentMethod=='AYAPAY'){
+                
             }
         }
         console.log('This is booking payment page');

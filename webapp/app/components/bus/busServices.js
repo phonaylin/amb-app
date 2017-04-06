@@ -1,4 +1,4 @@
-busModule.service('busServices',['$http', function($http){
+busModule.service('busServices',['$http','$cookies', function($http,$cookies){
 	return {
        	getBusRoutes : function(){
 			return $http.get(APIURL+"busroutes");
@@ -7,18 +7,13 @@ busModule.service('busServices',['$http', function($http){
 			return $http.get(APIURL+"pOIs");
  		},
 		orderBusTicket : function(data){
-			return $http.post(APIURL+"busorders",data,{headers:APIHEADER});
+			return $http.post(APIURL+"busorders",data);
  		},
 		searchRouteFromTo: function(data){
 			var fromCityID = data.fromCity;//integer
 			var toCityID = data.toCity;//integer
-			// if(angular.isNumber(fromCityID) && angular.isNumber(toCityID)){
-			// 	var fromCityUrl = APIURL+"pOIs/"+fromCityID;
-			// 	var toCityUrl = APIURL+"pOIs/"+toCityID;
 				return $http.get(APIURL+"busroutes/search/findByOriginPOIAndDestPOI?origin="+data.fromCity+"&dest="+data.toCity+"&projection=summary");
-			// }
 		}
-
 	}
 }]);
 
@@ -27,7 +22,8 @@ busModule.service('busServices',['$http', function($http){
 /*
 http://52.77.49.9:9000/busroutes
 http://52.77.49.9:9000/pOIs
-http://52.77.49.9:9000/busorders
+http://52.77.49.9:9000/busorders 
+**** X-XSRF-TOKEN *****
 
 http://52.77.49.9:9000/busroutes/search/findByOriginPOI?origin=http://52.77.49.9:9000/pOIs/1&projection=summary
 
@@ -36,6 +32,7 @@ http://52.77.49.9:9000/busroutes/search
 
 http://52.77.49.9:9000/busroutes/2
 
+X-XSRF-TOKEN
 
 
 Order Request

@@ -51,6 +51,14 @@ function config ($routeProvider,$httpProvider) {
 		templateUrl :'components/core/pageNotFound.html',
 		controller: 'busController'
 	})
+	.when('/redirecting-paymentpage',{
+		templateUrl :'components/core/pageRedirection.html',
+		controller: 'busController'
+	})
+	.when('/return-parameter/:param',{
+		templateUrl :'components/core/pageRedirection.html',
+		controller: 'busController'
+	})
 	.otherwise({
 			redirectTo: '/'
 		});

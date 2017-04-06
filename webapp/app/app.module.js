@@ -1,10 +1,27 @@
 var ambApp = angular.module('ambApp', ['ngRoute','ngResource','ambApp.Route','busModule','ui.bootstrap','720kb.datepicker','moment-picker','ngCookies']);
-ambApp.config(['$routeProvider', '$locationProvider','$httpProvider', function ($routeProvider, $locationProvider,$httpProvider) {
-	// $httpProvider.defaults.useXDomain = true;
+ambApp.config(['$routeProvider','$cookiesProvider', '$locationProvider','$httpProvider', function ($routeProvider, $cookiesProvider, $locationProvider,$httpProvider) {
+
+  // $httpProvider.defaults.xsrfCookieName = 'XSRF-TOKEN';
+  // $httpProvider.defaults.xsrfHeaderName = 'X-XSRF-TOKEN';
+  // $httpProvider.interceptors.push('sessionInjector');
 	$locationProvider.hashPrefix('');
 	$routeProvider.otherwise({redirectTo:'/'});
-	// delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  //$httpProvider.defaults.useXDomain = true;
+  //$httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
+  //$httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = "Origin, X-Requested-With, Content-Type, Accept" ;
+  
+	//delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    // $httpProvider.interceptors.push(function() {
+    //     return {
+    //         response: function(response) {
+    //             $httpProvider.defaults.headers.common['X-XSRF-TOKEN'] = response.headers('XSRF-TOKEN');
+    //             return response;
+    //         }
+    //     }    
+    // });  
 }]);
+
+
 
 
 
@@ -46,6 +63,17 @@ ambApp.filter('range', function() {
   };
 });
 
+// ambApp.factory('sessionInjector', ['SessionService', function(SessionService) {  
+//     var sessionInjector = {
+//         request: function(config) {
+//             if (!SessionService.isAnonymus) {
+//                 config.headers['x-session-token'] = SessionService.token;
+//             }
+//             return config;
+//         }
+//     };
+//     return sessionInjector;
+// }]);
 
 ambApp.factory('Scopes', function ($rootScope) {
     var mem = {};
@@ -59,8 +87,41 @@ ambApp.factory('Scopes', function ($rootScope) {
         }
     };
 });
-ambApp.run(function($rootScope,busServices,$http,$location,$route) {
+ambApp.run(function($rootScope,busServices,$http,$location,$route,$cookies) {
    $rootScope.$on('scope.stored', function (event, data) {
         console.log("scope.stored", data);
     });
+    $http.defaults.headers.post['X-XSRF-TOKEN'] =  $cookies.get('XSRF-TOKEN');
+    console.log('XSRF-TOKEN:'+$cookies['XSRF-TOKEN']);
 });
+
+
+
+// ambApp.provider('myCSRF',[function(){
+//   var headerName = 'X-CSRFToken';
+//   var cookieName = 'csrftoken';
+//   var allowedMethods = ['GET'];
+
+//   this.setHeaderName = function(n) {
+//     headerName = n;
+//   }
+//   this.setCookieName = function(n) {
+//     cookieName = n;
+//   }
+//   this.setAllowedMethods = function(n) {
+//     allowedMethods = n;
+//   }
+//   this.$get = ['$cookies', function($cookies){
+//     return {
+//       'request': function(config) {
+//         if(allowedMethods.indexOf(config.method) === -1) {
+//           // do something on success
+//           config.headers[headerName] = $cookies[cookieName];
+//         }
+//         return config;
+//       }
+//     }
+//   }];
+// }]).config(function($httpProvider) {
+//   $httpProvider.interceptors.push('myCSRF');
+// });
